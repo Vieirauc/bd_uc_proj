@@ -175,7 +175,7 @@ def login_user():
 
     try:
         # parameterized queries, good for security and performance
-        cur.execute('SELECT username,password_hash FROM account WHERE username = %s',(payload['username'],))
+        cur.execute('SELECT username,password_hash,id FROM account WHERE username = %s',(payload['username'],))
         rows = cur.fetchall()
 
         row = rows[0]
@@ -188,7 +188,7 @@ def login_user():
             },
                 app.config['SECRET_KEY'])
             response = {'status': StatusCodes['success'], 'results': f'Inserted user {payload["username"]}'}
-            return flask.jsonify({'token': token.decode('utf-8')})
+            return flask.jsonify({'token': token})
         else:
             response = {'status': StatusCodes['api_error'], 'results': f'Incorrect password'}
             return flask.jsonify(response)
@@ -206,16 +206,16 @@ def login_user():
 
 
 
-@app.route('/dbproj/product', methods=['POST'])
+@app.route('/dbproj/song', methods=['POST'])
 @token_required
-def add_product(user_id):
-    logger.info('POST /dbproj/product')
+def add_song(user_id):
+    logger.info('POST /dbproj/song')
     payload = flask.request.get_json()
 
     conn = db_connection()
     cur = conn.cursor()
 
-    logger.debug(f'POST /dbproj/product - payload: {payload}')
+    logger.debug(f'POST /dbproj/song - payload: {payload}')
 
     # do not forget to validate every argument, e.g.,:
     

@@ -698,3 +698,110 @@ INFO:logger:PUT /dbproj/user
 DEBUG:logger:PUT /dbproj/user - payload: {'username': 'joana', 'password_hash': 'jo123'}
 ERROR:logger:PUT /dbproj/user - error: tuple index out of range
 INFO:werkzeug:127.0.0.1 - - [14/May/2023 21:58:46] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'joana', 'password_hash': 'jo123'}
+ERROR:logger:PUT /dbproj/user - error: 'str' object has no attribute 'decode'
+INFO:werkzeug:127.0.0.1 - - [14/May/2023 22:22:51] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'joana', 'password_hash': 'jo123'}
+ERROR:logger:PUT /dbproj/user - error: 'str' object has no attribute 'decode'
+INFO:werkzeug:127.0.0.1 - - [14/May/2023 22:23:32] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'joana', 'password_hash': 'jo123'}
+ERROR:logger:PUT /dbproj/user - error: 'str' object has no attribute 'decode'
+INFO:werkzeug:127.0.0.1 - - [14/May/2023 22:23:59] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'joana', 'password_hash': 'jo123'}
+INFO:werkzeug:127.0.0.1 - - [14/May/2023 22:27:33] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
