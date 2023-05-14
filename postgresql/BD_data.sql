@@ -1,3 +1,6 @@
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+
 CREATE TABLE account (
 	id		 BIGSERIAL NOT NULL,
 	username	 VARCHAR(512) NOT NULL,

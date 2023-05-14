@@ -11,7 +11,7 @@
 ## =============================================
 ##
  
-
+import hashlib
 import flask
 import logging, psycopg2, time
 import jwt
@@ -26,6 +26,20 @@ StatusCodes = {
     'api_error': 400,
     'internal_error': 500
 }
+
+#########################################################
+## UTILITY FUNCTIONS
+#########################################################
+def hash_password(password):
+    return hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+def check_password(password, hash):
+    hashed = hash_password(password)
+    if hashed.strip() == hash.strip():
+        return True
+    else:
+        return False
+
 
 #########################################################
 ## TOKEN REQUIRED
@@ -57,7 +71,7 @@ def db_connection():
     db = psycopg2.connect(
         user = "postgres",
         password = "postgres",
-        host = 'dbproject',
+        host = '127.0.0.1',
         port = "5432",
         database = "dbproj"
     )
@@ -93,30 +107,58 @@ def add_user():
 
     # do not forget to validate every argument, e.g.,:
     
-    if 'name' not in payload:
-        response = {'status': StatusCodes['api_error'], 'results': 'name value not in payload'}
+    if 'username' not in payload or 'email' not in payload or 'password_hash' not in payload:
+        response = {'status': StatusCodes['api_error'], 'results': 'username, email or password_hash value not in payload'}
+        return flask.jsonify(response)
+    
+    if 'role' not in payload:
+        response = {'status': StatusCodes['api_error'], 'results': 'role value not in payload'}
         return flask.jsonify(response)
     
     # parameterized queries, good for security and performance
-    statement = 'INSERT INTO utilizador (name, email, pass, admin) VALUES (%s, %s, %s, %s)'
-    values = (payload['name'], payload['email'], payload['pass'], payload['admin'])
+    if(payload['role'] == 'admin'):
+        statement = 'INSERT INTO account (username, email, password_hash) VALUES (%s, %s, %s) RETURNING id'
+        values = (payload['username'], payload['email'], payload['password_hash'])
 
-    try:
-        cur.execute(statement, values)
+        try:
+            cur.execute(statement, values)
+            account_id = cur.fetchone()[0]
+            statement = 'INSERT INTO administrator (account_id) VALUES (%s)'
+            values = (account_id,)
+            cur.execute(statement, values)
+            # commit the transaction
+            conn.commit()
+            response = {'status': StatusCodes['success'], 'results': f'Inserted account {payload["role"]} {payload["username"]}'}
+        
+        except (Exception, psycopg2.DatabaseError) as error:
+            logger.error(f'POST /dbproj/user - error: {error}')
+            response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+            # an error occurred, rollback
+            conn.rollback()
+        
+        finally:
+            if conn is not None:
+                conn.close()
 
-        # commit the transaction
-        conn.commit()
-        response = {'status': StatusCodes['success'], 'results': f'Inserted utilizador {payload["name"]}'}
+    elif(payload['role'] == 'regular'):
+        statement = 'INSERT INTO account (username, email, password_hash) VALUES (%s, %s, %s)'
+        values = (payload['username'], payload['email'], hash_password(payload['password_hash']))
 
-    except (Exception, psycopg2.DatabaseError) as error:
-        logger.error(f'POST /dbproj/user - error: {error}')
-        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
-        # an error occurred, rollback
-        conn.rollback()
+        try:
+            cur.execute(statement, values)
+            # commit the transaction
+            conn.commit()
+            response = {'status': StatusCodes['success'], 'results': f'Inserted account {payload["role"]} {payload["username"]}'}
 
-    finally:
-        if conn is not None:
-            conn.close()
+        except (Exception, psycopg2.DatabaseError) as error:
+            logger.error(f'POST /dbproj/user - error: {error}')
+            response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+            # an error occurred, rollback
+            conn.rollback()
+
+        finally:
+            if conn is not None:
+                conn.close()
 
     return flask.jsonify(response)
 
@@ -133,19 +175,19 @@ def login_user():
 
     try:
         # parameterized queries, good for security and performance
-        cur.execute('SELECT name,pass,id FROM utilizador WHERE name = %s',(payload['name'],))
+        cur.execute('SELECT username,password_hash FROM account WHERE username = %s',(payload['username'],))
         rows = cur.fetchall()
 
         row = rows[0]
         
-        if (payload['pass'] == row[1]):
+        if (check_password(payload['password_hash'],row[1])):
             utc_dt_aware = datetime.now(timezone.utc)
             token = jwt.encode({
                 'user_id': row[2],
                 'exp': utc_dt_aware + timedelta(minutes = 120)
             },
                 app.config['SECRET_KEY'])
-            response = {'status': StatusCodes['success'], 'results': f'Inserted user {payload["name"]}'}
+            response = {'status': StatusCodes['success'], 'results': f'Inserted user {payload["username"]}'}
             return flask.jsonify({'token': token.decode('utf-8')})
         else:
             response = {'status': StatusCodes['api_error'], 'results': f'Incorrect password'}
@@ -561,6 +603,8 @@ if __name__ == "__main__":
 
     time.sleep(1) #
 
+    host = '127.0.0.1'
+    port = 8080
     logger.info("\n---------------------------------------------------------------\n" + 
-                  "API v1.1 online: http://localhost:8080/dbproj/\n\n")
-    app.run(host="0.0.0.0", debug=True, threaded=True)
+                  "API v1.1 online: http://localhost:8080/\n\n")
+    app.run(host=host, debug=True, threaded=True, port=port)
