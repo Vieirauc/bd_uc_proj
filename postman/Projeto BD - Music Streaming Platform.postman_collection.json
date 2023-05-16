@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "e31f00df-6f85-486b-865c-f227ff45fd8f",
+		"name": "Projeto BD - Music Streaming Platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24024771"
+	},
+	"item": [
+		{
+			"name": "Add user admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Luis\", \r\n    \"email\": \"lucas@gmail.com\", \r\n    \"pass\": \"luis123\",\r\n    \"role\": \"admin\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/dbproj/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
