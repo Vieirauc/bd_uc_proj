@@ -812,3 +812,199 @@ API v1.1 online: http://localhost:8080/
 
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+INFO:werkzeug: * Running on http://127.0.0.1:8080 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:logger:POST /dbproj/user
+INFO:werkzeug:127.0.0.1 - - [16/May/2023 15:48:51] "[35m[1mPOST /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+INFO:werkzeug: * Running on http://127.0.0.1:8080 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug:127.0.0.1 - - [16/May/2023 15:49:35] "[31m[1mGET /dbproj/user HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [16/May/2023 15:49:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'johndoe', 'email': 'johndoe@example.com', 'password_hash': 'password123', 'role': 'regular'}
+INFO:werkzeug:127.0.0.1 - - [16/May/2023 16:52:40] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'adminuser', 'email': 'adminuser@example.com', 'password_hash': 'password123', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [16/May/2023 16:53:07] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+INFO:werkzeug: * Running on http://127.0.0.1:8080 (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174
+INFO:werkzeug: * Detected change in 'c:\\UNIVERSIDADE\\3ºANO\\2SEMESTRE\\BD\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-801-174

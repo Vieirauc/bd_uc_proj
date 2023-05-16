@@ -40,6 +40,66 @@ def check_password(password, hash):
     else:
         return False
 
+def get_user_top_songs(user_id):
+    conn = db_connection()
+    cur = conn.cursor()
+
+    cur.execute("""
+        SELECT song_ismn, COUNT(*) as play_count
+        FROM play_history
+        WHERE user_id = %s
+        GROUP BY song_id
+        ORDER BY play_count DESC
+        LIMIT 10
+    """, (user_id,))
+    rows = cur.fetchall()
+    top_songs = [row[0] for row in rows]
+
+    conn.close()
+
+    return top_songs
+
+def update_play_count(song_id):
+    conn = db_connection()
+    cur = conn.cursor()
+
+    cur.execute("""
+        INSERT INTO play_history (song_id)
+        VALUES (%s)
+    """, (song_id,))
+    conn.commit()
+
+    conn.close()
+
+
+def get_play_count(song_id):
+    conn = db_connection()
+    cur = conn.cursor()
+
+    cur.execute("""
+        SELECT COUNT(*) as play_count
+        FROM play_history
+        WHERE song_id = %s
+    """, (song_id,))
+    row = cur.fetchone()
+
+    conn.close()
+
+    return row[0]
+
+
+def update_user_top_songs(user_id, top_songs):
+    conn = db_connection()
+    cur = conn.cursor()
+
+    cur.execute("""
+        UPDATE users
+        SET top_songs = %s
+        WHERE id = %s
+    """, (top_songs, user_id))
+    conn.commit()
+
+    conn.close()
 
 #########################################################
 ## TOKEN REQUIRED
@@ -62,6 +122,8 @@ def token_required(func):
             return flask.jsonify({'alerta': 'Invalid Token!'}), 400
         return func(user_id,*args, **kwargs)
     return decorated
+
+
 
 ##########################################################
 ## DATABASE ACCESS
@@ -90,11 +152,11 @@ def landing_page():
     <br/>
     Check the sources for instructions on how to use the endpoints!<br/>
     <br/>
-    Equipa de dev Luís Vieira , Eduardo e Raul Sofia<br/>
+    Equipa de dev Luís Vieira , Eduardo Carvalho e Raul Sofia<br/>
     <br/>
     """
     
-
+#1
 @app.route('/dbproj/user', methods=['POST'])
 def add_user():
     logger.info('POST /dbproj/user')
@@ -162,7 +224,7 @@ def add_user():
 
     return flask.jsonify(response)
 
-
+#2
 @app.route('/dbproj/user', methods=['PUT'])
 def login_user():
     logger.info('PUT /dbproj/user')
@@ -205,7 +267,7 @@ def login_user():
     return flask.jsonify(response)
 
 
-
+#3
 @app.route('/dbproj/song', methods=['POST'])
 @token_required
 def add_song(user_id):
@@ -245,6 +307,70 @@ def add_song(user_id):
             conn.close()
 
     return flask.jsonify(response)
+
+#9
+@app.route('/dbproj/<int:song_ismn>', methods=['PUT'])
+@token_required
+def play_song(user_id, song_ismn):
+    logger.info(f'PUT /dbproj/{song_ismn}')
+
+    # Get the current user's top 10 played songs
+    user_top_songs = get_user_top_songs(user_id)
+
+    # Increment the play count for the played song
+    update_play_count(song_ismn)
+
+    # Update the user's top 10 played songs if necessary
+    if song_ismn in user_top_songs:
+        user_top_songs.remove(song_ismn)
+    user_top_songs.append(song_ismn)
+    user_top_songs = sorted(user_top_songs, key=lambda x: get_play_count(x), reverse=True)[:10]
+    update_user_top_songs(user_id, user_top_songs)
+
+    response = {'status': StatusCodes['success']}
+    return flask.jsonify(response)
+
+
+#10
+@app.route('/dbproj/card', methods=['POST'])
+@token_required
+def generate_cards(user_id):
+    logger.info('POST /dbproj/card')
+    payload = flask.request.get_json()
+
+    num_cards = payload.get('number_cards')
+    card_price = payload.get('card_price')
+
+    if not num_cards or not card_price:
+        response = {'status': StatusCodes['bad_request'], 'errors': 'Both number_cards and card_price are required'}
+        return flask.jsonify(response)
+
+    try:
+        conn = db_connection()
+        cur = conn.cursor()
+
+        card_ids = []
+        for i in range(num_cards):
+            cur.execute('INSERT INTO prepaid_card (price, created_by) VALUES (%s, %s) RETURNING id', (card_price, user_id))
+            card_id = cur.fetchone()[0]
+            card_ids.append(card_id)
+
+        conn.commit()
+
+        response = {'status': StatusCodes['success'], 'results': card_ids}
+        return flask.jsonify(response)
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'POST /dbproj/card - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+        conn.rollback()
+
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
+
 
 
 @app.route('/dbproj/product/<product_id>', methods=['PUT'])
