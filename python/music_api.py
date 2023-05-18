@@ -570,6 +570,7 @@ def artist_info(artist_id):
 
     return flask.jsonify(response)
 
+#TODO: Testar e corrigir codigo que se segue
 @app.route('/dbproj/subscription', methods=['POST'])
 def subscribe_to_premium():
     logger.info('POST /dbproj/subscription')
@@ -614,6 +615,7 @@ def subscribe_to_premium():
 
     return flask.jsonify(response)
 
+#TODO: Testar e corrigir codigo que se segue
 @app.route('/dbproj/playlist', methods=['POST'])
 def create_playlist():
     logger.info('POST /dbproj/playlist')
