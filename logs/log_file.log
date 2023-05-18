@@ -3079,3 +3079,10 @@ WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 139-544-939
 INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
 INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
