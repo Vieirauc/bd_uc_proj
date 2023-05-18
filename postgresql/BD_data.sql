@@ -12,6 +12,7 @@ CREATE TABLE account (
 
 CREATE TABLE publisher (
 	id SERIAL NOT NULL,
+	name VARCHAR(512) NOT NULL,
 	PRIMARY KEY(id)
 );
 
@@ -45,7 +46,7 @@ CREATE TABLE song (
 	ismn		 INTEGER NOT NULL,
 	name		 VARCHAR(512) NOT NULL,
 	release_date	 TIMESTAMP NOT NULL,
-	genre		 INTEGER NOT NULL,
+	genre		 VARCHAR(512) NOT NULL,
 	duration		 INTEGER NOT NULL,
 	artist_account_id BIGINT NOT NULL,
 	publisher_id	 INTEGER NOT NULL,
@@ -149,3 +150,5 @@ ALTER TABLE position ADD CONSTRAINT position_fk1 FOREIGN KEY (song_ismn) REFEREN
 ALTER TABLE position ADD CONSTRAINT position_fk2 FOREIGN KEY (compilation_id) REFERENCES compilation(id);
 ALTER TABLE artist_song ADD CONSTRAINT artist_song_fk1 FOREIGN KEY (artist_account_id) REFERENCES artist(account_id);
 ALTER TABLE artist_song ADD CONSTRAINT artist_song_fk2 FOREIGN KEY (song_ismn) REFERENCES song(ismn);
+
+INSERT INTO publisher (name) VALUES ('Think Music Records');
