@@ -452,6 +452,220 @@ def add_album(user_id):
 
     return flask.jsonify(response)
 
+# Endpoint for searching songs
+@app.route('/dbproj/song/<keyword>', methods=['GET'])
+def search_song(keyword):
+    logger.info('GET /dbproj/song/<keyword>')
+
+    conn = db_connection()
+    cur = conn.cursor()
+
+    try:
+        # Execute the SQL query to retrieve songs
+        statement = '''SELECT s.name, a.artistic_name, c.nome
+                        FROM song s
+                        JOIN artist_song asg ON s.ismn = asg.song_ismn
+                        JOIN artist a ON asg.artist_account_id = a.account_id
+                        JOIN position p ON s.ismn = p.song_ismn
+                        JOIN compilation c ON p.compilation_id = c.id
+                        JOIN album al ON c.id = al.compilation_id
+                        WHERE s.name ILIKE '%' || 'Bless' || '%' '''
+
+        #TODO : Add keyword to the query
+        #values = (keyword)
+        #cur.execute(statement, values)
+        #Nota: Por alguma razão, o código acima não funciona e dá erro no "cur.execute"
+
+        cur.execute(statement)
+        print('Executed')
+        results = cur.fetchall()
+
+        response = {'status': StatusCodes['success'], 'results': []}
+
+        #Organize resultas by song name , artists and albums
+        song_list = []
+        
+        i = 0
+        for result in results:
+            if i == 0:
+                song = {'title': '', 'artists': [], 'albums': []}
+                song['title'] = result[0]
+            if result[0] != song['title']:
+                song_list.append(song)
+                song = {'title': '', 'artists': [], 'albums': []}
+                song['title'] = result[0]
+            if result[2] not in song['albums']:
+                song['albums'].append(result[2])
+            if result[1] not in song['artists']:
+                song['artists'].append(result[1])
+            i += 1
+        song_list.append(song)
+
+        response['results'] = song_list
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'GET /dbproj/song/<keyword> - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
+
+@app.route('/dbproj/artist_info/<artist_id>', methods=['GET'])
+def artist_info(artist_id):
+    logger.info(f'GET /dbproj/artist_info/{artist_id}')
+
+    conn = db_connection()
+    cur = conn.cursor()
+
+    try:
+        # Execute the SQL query to retrieve artist information
+        statement = '''SELECT a.artistic_name, array_agg(DISTINCT s.ismn) AS songs,
+                            array_agg(DISTINCT al.compilation_id) AS albums,
+                            array_agg(DISTINCT p.compilation_id) AS playlists
+                       FROM artist a
+                       LEFT JOIN artist_song asg ON a.account_id = asg.artist_account_id
+                       LEFT JOIN song s ON asg.song_ismn = s.ismn
+                       LEFT JOIN album al ON a.account_id = al.artist_account_id
+                       LEFT JOIN position p ON al.compilation_id = p.compilation_id
+                       WHERE a.account_id = %s
+                       GROUP BY a.account_id
+                    '''
+        values = (artist_id,)
+        cur.execute(statement, values)
+
+        result = cur.fetchone()
+
+        #TODO:
+        #Não incluir albuns nas playlists
+
+        if result:
+            artist_name = result[0]
+            songs = result[1] or []
+            albums = result[2] or []
+            playlists = result[3] or []
+
+            response = {
+                'status': StatusCodes['success'],
+                'results': {
+                    'name': artist_name,
+                    'songs': songs,
+                    'albums': albums,
+                    'playlists': playlists
+                }
+            }
+        else:
+            response = {
+                'status': StatusCodes['not_found'],
+                'errors': f'Artist with ID {artist_id} not found'
+            }
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'GET /dbproj/artist_info/{artist_id} - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
+
+@app.route('/dbproj/subscription', methods=['POST'])
+def subscribe_to_premium():
+    logger.info('POST /dbproj/subscription')
+
+    payload = flask.request.get_json()
+
+    # Verifying if required fields are present in the payload
+    if 'period' not in payload or 'cards' not in payload:
+        response = {'status': StatusCodes['bad_request'], 'errors': 'Missing required fields'}
+        return flask.jsonify(response)
+
+    period = payload['period']
+    cards = payload['cards']
+
+    conn = db_connection()
+    cur = conn.cursor()
+
+    try:
+        # Execute the SQL query to insert the subscription information
+        statement = '''INSERT INTO subscription (period) VALUES (%s) RETURNING id'''
+        values = (period,)
+        cur.execute(statement, values)
+
+        subscription_id = cur.fetchone()[0]
+
+        # Execute the SQL query to insert the payment information for each card
+        statement = '''INSERT INTO payment (subscription_id, card_number) VALUES (%s, %s)'''
+        values = [(subscription_id, card) for card in cards]
+        cur.executemany(statement, values)
+
+        conn.commit()
+
+        response = {'status': StatusCodes['success'], 'results': subscription_id}
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'POST /dbproj/subscription - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+        conn.rollback()
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
+
+@app.route('/dbproj/playlist', methods=['POST'])
+def create_playlist():
+    logger.info('POST /dbproj/playlist')
+
+    payload = flask.request.get_json()
+
+    # Verifying if required fields are present in the payload
+    if 'playlist_name' not in payload or 'visibility' not in payload or 'songs' not in payload:
+        response = {'status': StatusCodes['bad_request'], 'errors': 'Missing required fields'}
+        return flask.jsonify(response)
+
+    playlist_name = payload['playlist_name']
+    visibility = payload['visibility']
+    songs = payload['songs']
+
+    # Checking if user is logged in as a Premium consumer
+    # Add your authentication logic here
+
+    # If the user is not logged in or is not a Premium consumer, return an error response
+    if not is_logged_in() or not is_premium_user():
+        response = {'status': StatusCodes['unauthorized'], 'errors': 'Only premium consumers can create playlists'}
+        return flask.jsonify(response)
+
+    conn = db_connection()
+    cur = conn.cursor()
+
+    try:
+        # Execute the SQL query to insert the playlist information
+        statement = '''INSERT INTO playlist (name, visibility) VALUES (%s, %s) RETURNING id'''
+        values = (playlist_name, visibility)
+        cur.execute(statement, values)
+
+        playlist_id = cur.fetchone()[0]
+
+        # Execute the SQL query to insert the song entries in the playlist
+        statement = '''INSERT INTO playlist_song (playlist_id, song_id) VALUES (%s, %s)'''
+        values = [(playlist_id, song) for song in songs]
+        cur.executemany(statement, values)
+
+        conn.commit()
+
+        response = {'status': StatusCodes['success'], 'results': {'playlist_id': playlist_id}}
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'POST /dbproj/playlist - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+        conn.rollback()
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
 
     
 
