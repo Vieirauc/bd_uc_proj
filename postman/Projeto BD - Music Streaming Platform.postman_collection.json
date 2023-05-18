@@ -13,7 +13,12 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Luis\", \r\n    \"email\": \"lucas@gmail.com\", \r\n    \"pass\": \"luis123\",\r\n    \"role\": \"admin\"\r\n}"
+					"raw": "{\r\n    \"username\": \"admin\", \r\n    \"email\": \"admin@admin.com\", \r\n    \"password\": \"admin\",\r\n    \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8080/dbproj/user",
@@ -31,10 +36,333 @@
 			"response": []
 		},
 		{
-			"name": "Login",
+			"name": "Add user artist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "admin-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJyb2xlIjoiYWRtaW4iLCJleHAiOjE2ODQ0NTU0Njh9.JiO_lSzGJtlgyxA0KtNsbtd4cEk1amd0Jqj4EROnUeM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Prof\", \r\n    \"email\": \"prof@jam.com\", \r\n    \"password\": \"aguadecoco\",\r\n    \"role\": \"artist\",\r\n    \"artistic_name\":\"ProfJam\",\r\n    \"publisher\": \"Think Music Records\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/dbproj/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add user consumer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"lucas\", \r\n    \"email\": \"lucas@gmail.com\", \r\n    \"password\": \"lu123\",\r\n    \"role\": \"consumer\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/dbproj/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Consumer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"lucas\", \r\n    \"password\": \"lu123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/dbproj/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Prof",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Prof\", \r\n    \"password\": \"aguadecoco\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/dbproj/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Admin",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/dbproj/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add song",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJyb2xlIjoiYXJ0aXN0IiwiZXhwIjoxNjg0NDU1OTY3fQ.lNgIV7ASZ_o9HEBr-EE0HAAbYsRK_606QOQj2uwyFPA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"song_name\": \"Bless\",\r\n  \"release_date\": \"2023-05-5\",\r\n  \"publisher\": 2,\r\n  \"other_artists\": [],\r\n  \"duration\": 240,\r\n  \"ismn\": 1234567898,\r\n  \"genre\": \"Hip-Hop\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/dbproj/song",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"song"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add album",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJyb2xlIjoiYXJ0aXN0IiwiZXhwIjoxNjg0NDYwNDg0fQ.T4BZocOSt8GA1Zo6E6OJSYkA1Xw9rT6ONG2DDIzP4iI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"MDID - “Música De Intervenção Divina”\",\r\n  \"release_date\": \"2023-05-18\",\r\n  \"publisher\": 1,\r\n  \"songs\": [\r\n    {\r\n      \"song_name\": \"Bless\",\r\n      \"release_date\": \"2023-05-4\",\r\n      \"publisher\": 1,\r\n      \"ismn\": 12255099,\r\n      \"genre\": \"Hip-Hop\",\r\n      \"duration\": 189,\r\n      \"other_artists\": [1, 2]\r\n      \r\n    },\r\n    1234567899\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/dbproj/album",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"album"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Song",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dbproj/song/Bless",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"song",
+						"Bless"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Details Artist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dbproj/artist_info/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"artist_info",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment Song",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJyb2xlIjoiY29uc3VtZXIiLCJleHAiOjE2ODQ0NjA1NTV9.vKpSnYjOrAICaMbOYylJDISKIyHt9Moft6uHQO__tfo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"musica bem top\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/dbproj/comments/12255099",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"comments",
+						"12255099"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reply to comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJyb2xlIjoiY29uc3VtZXIiLCJleHAiOjE2ODQ0NjA1NTV9.vKpSnYjOrAICaMbOYylJDISKIyHt9Moft6uHQO__tfo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"pois é bro , bem top\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/dbproj/comments/12255099/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dbproj",
+						"comments",
+						"12255099",
+						"5"
+					]
+				}
 			},
 			"response": []
 		}
