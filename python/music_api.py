@@ -263,7 +263,7 @@ def login_user():
 
         if artist_row:
             # O usuário é um artista
-            account_id = admin_row[0]
+            account_id = artist_row[0]
 
             utc_dt_aware = datetime.utcnow()
             token = jwt.encode({
@@ -383,7 +383,7 @@ def add_song(user_id):
 
 @app.route('/dbproj/album', methods=['POST'])
 @token_required
-def add_album():
+def add_album(user_id):
     logger.info('POST /dbproj/album')
     payload = flask.request.get_json()
 
@@ -401,34 +401,40 @@ def add_album():
         return flask.jsonify(response)
 
     try:
-        # Insert the album into the album table
-        statement = 'INSERT INTO album (compilation_id, artist_account_id) VALUES (DEFAULT, %s) RETURNING compilation_id'
-        values = (payload['publisher'],)
-        cur.execute(statement, values)
+
+        # Inserir uma nova entrada na tabela "compilation"
+        cur.execute("INSERT INTO compilation (nome) VALUES (%s) RETURNING id", (payload['name'],))
         compilation_id = cur.fetchone()[0]
 
+        # Insert the album into the album table
+        statement = 'INSERT INTO album (compilation_id, artist_account_id) VALUES (%s, %s) RETURNING compilation_id'
+        values = (compilation_id,payload['publisher'])
+        cur.execute(statement, values)
+
+        #Starting position
+        position = 1
         # Insert the songs into the song table and their relationships with the album
         for song_data in payload['songs']:
             if isinstance(song_data, int):
                 # Existing song, associate it with the album
-                statement = 'INSERT INTO position (position, song_ismn, compilation_id) VALUES (DEFAULT, %s, %s)'
-                values = (song_data, compilation_id)
+                statement = 'INSERT INTO position (position, song_ismn, compilation_id) VALUES (%s, %s, %s)'
+                values = (position,song_data, compilation_id)
                 cur.execute(statement, values)
             elif isinstance(song_data, dict):
                 # New song, follow the same process as adding a single song
-                statement = 'INSERT INTO song (name, release_date, publisher_id) VALUES (%s, %s, %s) RETURNING ismn'
-                values = (song_data['song_name'], song_data['release_date'], song_data['publisher'])
+                statement = 'INSERT INTO song (name, release_date, publisher_id, ismn, genre, duration , artist_account_id) VALUES (%s, %s, %s, %s, %s, %s, %s)'
+                values = (song_data['song_name'], song_data['release_date'], song_data['publisher'], song_data['ismn'], song_data['genre'], song_data['duration'], user_id)
                 cur.execute(statement, values)
-                song_ismn = cur.fetchone()[0]
 
                 for artist_id in song_data.get('other_artists', []):
                     statement = 'INSERT INTO artist_song (artist_account_id, song_ismn) VALUES (%s, %s)'
-                    values = (artist_id, song_ismn)
+                    values = (artist_id, song_data['ismn'])
                     cur.execute(statement, values)
 
-                statement = 'INSERT INTO position (position, song_ismn, compilation_id) VALUES (DEFAULT, %s, %s)'
-                values = (song_ismn, compilation_id)
+                statement = 'INSERT INTO position (position, song_ismn, compilation_id) VALUES (%s, %s, %s)'
+                values = (position,song_data['ismn'], compilation_id)
                 cur.execute(statement, values)
+            position += 1
 
         # Commit the transaction
         conn.commit()
@@ -447,294 +453,6 @@ def add_album():
     return flask.jsonify(response)
 
 
-@app.route('/dbproj/order', methods=['POST'])
-@token_required
-def buy_product(user_id):
-    logger.info('POST /dbproj/order')
-    payload = flask.request.get_json()
-
-    conn = db_connection()
-    cur = conn.cursor()
-
-    logger.debug(f'POST /dbproj/order - payload: {payload}')
-
-    # do not forget to validate every argument, e.g.,:
-    
-    if 'cart' not in payload:
-        response = {'status': StatusCodes['api_error'], 'results': 'cart value not in payload'}
-        return flask.jsonify(response)
-
-
-    try:
-
-        order_value = 0
-        for purchase in payload["cart"]:
-            logger.info(purchase)
-            cur.execute("SELECT price, stock FROM product WHERE id = %s",(purchase["product_id"],))
-            conn.commit()
-            product_price , stock = cur.fetchone()
-            if (stock < purchase['quantity']):
-                response = {'status': StatusCodes['api_error'], 'results': 'insufficient stock'}
-                return flask.jsonify(response)
-
-            stock = stock - purchase['quantity']
-            cur.execute('UPDATE product SET stock = %s WHERE id = %s',(stock,purchase['product_id']))
-            conn.commit()
-
-            order_value += purchase['quantity'] * product_price
-
-            statement = 'INSERT INTO purchase(product_id, quantity, utilizador_id) VALUES (%s, %s, %s)'
-            values = (purchase["product_id"],purchase['quantity'],user_id)
-            cur.execute(statement, values)
-            conn.commit()
-
-        cur.execute('INSERT INTO user_order (utilizador_id,price,order_date) VALUES (%s,%s,%s) RETURNING order_id',(user_id, order_value,datetime.now(timezone.utc)))
-        conn.commit()
-        [new_id] = cur.fetchone() 
-        response = {'status': StatusCodes['success'], 'results': f'order_id: {new_id}'}
-
-    except (Exception, psycopg2.DatabaseError) as error:
-        logger.error(f'POST /dbproj/user - error: {error}')
-        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
-        flask.render_template('')
-        # an error occurred, rollback
-        conn.rollback()
-
-    finally:
-        if conn is not None:
-            conn.close()
-
-    return flask.jsonify(response)
-
-@app.route('/dbproj/rating/<product_id>', methods=['POST'])
-@token_required
-def rate(user_id,product_id):
-    logger.info('POST /dbproj/rating/<product_id>')
-    payload = flask.request.get_json()
-
-    conn = db_connection()
-    cur = conn.cursor()
-
-    logger.debug(f'POST /dbproj/rating - payload: {payload}')
-
-    # do not forget to validate every argument, e.g.,:
-    
-    if 'rating' not in payload:
-        response = {'status': StatusCodes['api_error'], 'results': 'rating value not in payload'}
-        return flask.jsonify(response)
-    
-    # parameterized queries, good for security and performance
-
-    cur.execute("SELECT utilizador_id, product_id FROM purchase")
-    conn.commit()
-    rows = cur.fetchall()
-    
-    found = 0
-    for row in rows:
-        logger.info(row)
-        if int(row[0]) == int(user_id) and int(row[1]) == int(product_id):
-            statement = 'INSERT INTO rating (rate_val, comment, product_id, utilizador_id) VALUES (%s, %s, %s,%s)'
-            values = (payload['rating'], payload['comment'], product_id, user_id)
-            found = 1
-
-    if found == 0:
-        response = {'status': StatusCodes['api_error'], 'results': 'User doesn\'t own the product'}
-        return flask.jsonify(response)
-
-    try:
-        cur.execute(statement, values)
-
-        # commit the transaction
-        conn.commit()
-        response = {'status': StatusCodes['success'], 'results': f'Inserted rating'}
-
-    except (Exception, psycopg2.DatabaseError) as error:
-        logger.error(f'POST /dbproj/rating  - error: {error}')
-        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
-        flask.render_template('')
-        # an error occurred, rollback
-        conn.rollback()
-
-    finally:
-        if conn is not None:
-            conn.close()
-
-    return flask.jsonify(response)
-
-@app.route('/dbproj/questions/<product_id>', methods=['POST'])
-@token_required
-def make_question(user_id,product_id):
-    logger.info('POST /dbproj/questions/<product_id>')
-    payload = flask.request.get_json()
-
-    conn = db_connection()
-    cur = conn.cursor()
-
-    logger.debug(f'POST /dbproj/questions/<product_id> - payload: {payload}')
-
-    # do not forget to validate every argument, e.g.,:
-    
-    if 'question' not in payload:
-        response = {'status': StatusCodes['api_error'], 'results': 'question value not in payload'}
-        return flask.jsonify(response)
-    
-    # parameterized queries, good for security and performance
-    statement = 'INSERT INTO q_a (message,product_id) VALUES (%s, %s)'
-    values = (payload['question'],product_id)
-
-    try:
-        cur.execute(statement, values)
-
-        # commit the transaction
-        conn.commit()
-        response = {'status': StatusCodes['success'], 'results': f'Inserted question'}
-
-    except (Exception, psycopg2.DatabaseError) as error:
-        logger.error(f'POST /dbproj/questions/<product_id>  - error: {error}')
-        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
-        # an error occurred, rollback
-        conn.rollback()
-
-    finally:
-        if conn is not None:
-            conn.close()
-
-    return flask.jsonify(response)
-
-@app.route('/dbproj/questions/<product_id>/<parent_question_id>', methods=['POST'])
-@token_required
-def answer_question(user_id,product_id,parent_question_id):
-    logger.info('POST /dbproj/questions/<product_id>/<parent_question_id>')
-    payload = flask.request.get_json()
-
-    conn = db_connection()
-    cur = conn.cursor()
-
-    logger.debug(f'POST /dbproj/questions/<product_id>/<parent_question_id> - payload: {payload}')
-
-    # do not forget to validate every argument, e.g.,:
-    
-    if 'answer' not in payload:
-        response = {'status': StatusCodes['api_error'], 'results': 'answer value not in payload'}
-        return flask.jsonify(response)
-    
-    # parameterized queries, good for security and performance
-    statement = 'INSERT INTO q_a (message,product_id,parent_question_id) VALUES (%s, %s, %s)'
-    values = (payload['answer'],product_id,parent_question_id)
-
-    try:
-        cur.execute(statement, values)
-
-        # commit the transaction
-        conn.commit()
-        response = {'status': StatusCodes['success'], 'results': f'Inserted answer'}
-
-    except (Exception, psycopg2.DatabaseError) as error:
-        logger.error(f'POST /dbproj/questions/<product_id>  - error: {error}')
-        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
-        # an error occurred, rollback
-        conn.rollback()
-
-    finally:
-        if conn is not None:
-            conn.close()
-
-    return flask.jsonify(response)
-
-@app.route('/dbproj/report/year', methods=['GET'])
-def get_report():
-    logger.info('GET /dbproj/report/year')
-
-    conn = db_connection()
-    cur = conn.cursor()
-
-    try:
-        cur.execute('SELECT price,order_date FROM user_order WHERE EXTRACT(YEAR FROM order_date) = EXTRACT(YEAR FROM CURRENT_DATE)')
-        rows = cur.fetchall()
-
-        logger.debug('GET /dbproj/report/year - parse')
-
-        total_orders = 0
-        total_value = 0
-        for row in rows:
-            #t1 = datetime.strptime(row[1],)
-            logger.info("TESTE")
-            total_value += float(row[0])
-            total_orders += 1
-        content = {'total_value': total_value, 'orders': total_orders}
-
-        response = {'status': StatusCodes['success'], 'results': content}
-
-    except (Exception, psycopg2.DatabaseError) as error:
-        logger.error(f'GET /dbproj/report/year - error: {error}')
-        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
-
-    finally:
-        if conn is not None:
-            conn.close()
-
-    return flask.jsonify(response)
-
-@app.route('/dbproj/product/<product_id>', methods=['GET'])
-def product_info(product_id):
-    logger.info('GET /dbproj/product/<product_id>')
-
-    logger.debug(f'product: {id}')
-
-    conn = db_connection()
-    cur = conn.cursor()
-
-    try:
-        cur.execute('SELECT name, id, stock, type, description, price, average_rating FROM product where id = %s', (product_id,))
-        rows = cur.fetchall()
-
-        row = rows[0]
-
-        logger.debug('GET /dbproj/product/<product_id> - parse')
-        logger.debug(row)
-        content = {'name': row[0], 'product_id': row[1], 'stock': row[2], 'type': row[3] , 'description' : row[4], 'price': row[5] , 'rating': row[6] }
-
-        response = {'status': StatusCodes['success'], 'results': content}
-
-    except (Exception, psycopg2.DatabaseError) as error:
-        logger.error(f'GET /dbproj/product/<product_id> - error: {error}')
-        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
-
-    finally:
-        if conn is not None:
-            conn.close()
-
-    return flask.jsonify(response)
-
-@app.route('/dbproj/notif', methods=['GET'])
-def get_department():
-    logger.info('GET /dbproj/notif')
-
-
-    conn = db_connection()
-    cur = conn.cursor()
-    
-    try:
-        cur.execute('SELECT notif_id, target_user FROM notif')
-        rows = cur.fetchall()
-        content = []
-        for row in rows:
-            logger.debug('GET /dbproj/notif - parse')
-            logger.debug(row)
-            content.append({'notif_id': int(row[0]), 'target_user': int(row[1])}) 
-            logger.info(content)
-
-        response = {'status': StatusCodes['success'], 'results': content}
-
-    except (Exception, psycopg2.DatabaseError) as error:
-        logger.error(f'GET /departments/<ndep> - error: {error}')
-        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
-
-    finally:
-        if conn is not None:
-            conn.close()
-
-    return flask.jsonify(response)
     
 
 ##########################################################

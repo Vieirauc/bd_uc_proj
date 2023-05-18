@@ -1841,3 +1841,313 @@ API v1.1 online: http://localhost:8080/
 
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/song
+DEBUG:logger:POST /dbproj/song - payload: {'song_name': 'JAMANTAH', 'release_date': '2023-05-5', 'publisher': 2, 'other_artists': [], 'duration': 240, 'ismn': 1234567899, 'genre': 'Hip-Hop'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:13:25] "POST /dbproj/song HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:14:13] "[31m[1mPOST /dbproj/album HTTP/1.1[0m" 400 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'joana', 'password': 'jo123'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:14:18] "[35m[1mPUT /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'Prof', 'password': 'aguadecoco'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:14:55] "[35m[1mPUT /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': 'Think Music Records'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:14:58] "[35m[1mPOST /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': 'Think Music Records'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:16:42] "[35m[1mPOST /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': 'Think Music Records'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:16:56] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'Prof', 'password': 'aguadecoco'}
+ERROR:logger:POST /dbproj/login - error: 'NoneType' object is not subscriptable
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:17:00] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'Prof', 'password': 'aguadecoco'}
+ERROR:logger:POST /dbproj/login - error: 'NoneType' object is not subscriptable
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:18:18] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'Prof', 'password': 'aguadecoco'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:19:30] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/song
+DEBUG:logger:POST /dbproj/song - payload: {'song_name': 'JAMANTAH', 'release_date': '2023-05-5', 'publisher': 2, 'other_artists': [], 'duration': 240, 'ismn': 1234567899, 'genre': 'Hip-Hop'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:19:41] "POST /dbproj/song HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:19:46] "[31m[1mPOST /dbproj/album HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:19:57] "[35m[1mPOST /dbproj/album HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: null value in column "compilation_id" of relation "album" violates not-null constraint
+DETAIL:  Failing row contains (1, null).
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:20:21] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: null value in column "compilation_id" of relation "album" violates not-null constraint
+DETAIL:  Failing row contains (1, null).
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:30:07] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: unsupported format character 'd' (0x64) at index 63
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:30:45] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: unsupported format character 'd' (0x64) at index 63
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:31:39] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: null value in column "ismn" of relation "song" violates not-null constraint
+DETAIL:  Failing row contains (null, Bless, 2023-05-04 00:00:00, null, null, null, 1).
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:31:46] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'other_artists': [1, 2], 'ismn': 12255657099}, 1]}
+ERROR:logger:POST /dbproj/album - error: null value in column "ismn" of relation "song" violates not-null constraint
+DETAIL:  Failing row contains (null, Bless, 2023-05-04 00:00:00, null, null, null, 1).
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:40:20] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'other_artists': [1, 2], 'ismn': 12255657099}, 1]}
+ERROR:logger:POST /dbproj/album - error: integer out of range
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:41:19] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'other_artists': [1, 2], 'ismn': 12255657099}, 1]}
+ERROR:logger:POST /dbproj/album - error: integer out of range
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:42:54] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'other_artists': [1, 2], 'ismn': 12255657099}, 1]}
+ERROR:logger:POST /dbproj/album - error: integer out of range
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:42:59] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'other_artists': [1, 2], 'ismn': 12255657099}, 1]}
+ERROR:logger:POST /dbproj/album - error: integer out of range
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:43:47] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255657099, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: integer out of range
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:46:37] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: null value in column "genre" of relation "song" violates not-null constraint
+DETAIL:  Failing row contains (12255099, Bless, 2023-05-04 00:00:00, null, null, null, 1).
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:47:42] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: null value in column "duration" of relation "song" violates not-null constraint
+DETAIL:  Failing row contains (12255099, Bless, 2023-05-04 00:00:00, Hip-Hop, null, null, 1).
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:48:41] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: null value in column "artist_account_id" of relation "song" violates not-null constraint
+DETAIL:  Failing row contains (12255099, Bless, 2023-05-04 00:00:00, Hip-Hop, 189, null, 1).
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:49:23] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: not all arguments converted during string formatting
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:51:23] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: null value in column "position" of relation "position" violates not-null constraint
+DETAIL:  Failing row contains (1, null, 12255099, 15).
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:51:46] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: null value in column "position" of relation "position" violates not-null constraint
+DETAIL:  Failing row contains (2, null, 12255099, 16).
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:54:02] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: name 'ong_data' is not defined
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:54:41] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1]}
+ERROR:logger:POST /dbproj/album - error: insert or update on table "position" violates foreign key constraint "position_fk1"
+DETAIL:  Key (song_ismn)=(1) is not present in table "song".
+
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 01:54:49] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1234567899]}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 02:00:18] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
