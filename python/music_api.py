@@ -95,7 +95,7 @@ def landing_page():
     <br/>
     """
     
-
+#Funcionalidade 1
 @app.route('/dbproj/user', methods=['POST'])
 def add_user():
     logger.info('POST /dbproj/user')
@@ -138,7 +138,7 @@ def add_user():
         response = {'status': StatusCodes['success'], 'results': f'User {payload["username"]} created'}
         return flask.jsonify(response)
 
-    elif(payload['role'] == 'regular'):
+    elif(payload['role'] == 'consumer'):
         statement = '''
             INSERT INTO account (username, email, password_hash)
             VALUES (%s, %s, %s)
@@ -149,12 +149,27 @@ def add_user():
         account_id = cur.fetchone()[0]
 
         statement = '''
-            INSERT INTO regular (account_id)
-            VALUES (%s)
+            INSERT INTO compilation (nome) VALUES (NULL) RETURNING id
         '''
         values = (account_id,)
+        cur.execute(statement)
+        top10_id = cur.fetchone()[0]
+
+        statement = '''
+            INSERT INTO consumer (account_id,premium,top10_id)
+            VALUES (%s,DEFAULT,%s)
+        '''
+        values = (account_id,top10_id)
         cur.execute(statement, values)
+
+        statement = '''
+            INSERT INTO playlist (consumer_account_id,compilation_id) VALUES (%s,%s)
+        '''
+        values = (account_id,top10_id)
+        cur.execute(statement,values)
         conn.commit()
+
+        
 
         response = {'status': StatusCodes['success'], 'results': f'User {payload["username"]} created'}
         return flask.jsonify(response)
@@ -203,6 +218,7 @@ def add_user():
     return flask.jsonify(response)
 
 
+#Funcionalidade 2
 @app.route('/dbproj/user', methods=['PUT'])
 def login_user():
     logger.info('PUT /dbproj/user')
@@ -281,16 +297,16 @@ def login_user():
         statement = 'SELECT id FROM account WHERE username = %s AND password_hash = %s'
         values = (username, hash_password(password))
         cur.execute(statement, values)
-        regular_user_row = cur.fetchone()
+        consumer_user_row = cur.fetchone()
 
-        if regular_user_row:
+        if consumer_user_row:
             # O usuário é um usuário regular
-            account_id = regular_user_row[0]
+            account_id = consumer_user_row[0]
               
             utc_dt_aware = datetime.utcnow()
             token = jwt.encode({
                 'user_id': account_id,
-                'role': 'artist',
+                'role': 'consumer',
                 'exp': utc_dt_aware + timedelta(minutes = 120)
             },
                 app.config['SECRET_KEY'], algorithm='HS256')
@@ -308,6 +324,7 @@ def login_user():
 
     return flask.jsonify(response)
 
+#Funcionalidade 3
 @app.route('/dbproj/song', methods=['POST'])
 @token_required
 def add_song(user_id):
@@ -381,6 +398,7 @@ def add_song(user_id):
 
     return flask.jsonify(response)
 
+#Funcionalidade 4
 @app.route('/dbproj/album', methods=['POST'])
 @token_required
 def add_album(user_id):
@@ -452,7 +470,7 @@ def add_album(user_id):
 
     return flask.jsonify(response)
 
-# Endpoint for searching songs
+#Funcionalidade 5
 @app.route('/dbproj/song/<keyword>', methods=['GET'])
 def search_song(keyword):
     logger.info('GET /dbproj/song/<keyword>')
@@ -512,6 +530,7 @@ def search_song(keyword):
 
     return flask.jsonify(response)
 
+#Funcionalidade 6
 @app.route('/dbproj/artist_info/<artist_id>', methods=['GET'])
 def artist_info(artist_id):
     logger.info(f'GET /dbproj/artist_info/{artist_id}')
@@ -570,6 +589,7 @@ def artist_info(artist_id):
 
     return flask.jsonify(response)
 
+#Funcionalidade 7
 #TODO: Testar e corrigir codigo que se segue
 @app.route('/dbproj/subscription', methods=['POST'])
 def subscribe_to_premium():
@@ -615,6 +635,7 @@ def subscribe_to_premium():
 
     return flask.jsonify(response)
 
+#Funcionalidade 8
 #TODO: Testar e corrigir codigo que se segue
 @app.route('/dbproj/playlist', methods=['POST'])
 def create_playlist():
@@ -671,8 +692,9 @@ def create_playlist():
 
 #Funcionalidade 11
 #TODO: Testar e corrigir codigo que se segue
+@token_required
 @app.route('/dbproj/comments/<song_id>', methods=['POST'])
-def leave_comment(song_id):
+def leave_comment(user_id,song_id):
     logger.info(f'POST /dbproj/comments/{song_id}')
 
     payload = flask.request.get_json()
@@ -688,29 +710,57 @@ def leave_comment(song_id):
     cur = conn.cursor()
 
     try:
-        if 'parent_comment_id' in payload:
-            parent_comment_id = payload['parent_comment_id']
+        # Insert the top-level comment
+        statement = '''INSERT INTO comment (song_ismn, body, consumer_account_id) VALUES (%s, %s) RETURNING id'''
+        values = (song_id, comment)
+        cur.execute(statement, values)
 
-            # Check if the parent comment exists
-            statement = '''SELECT id FROM comment WHERE id = %s'''
-            values = (parent_comment_id,)
-            cur.execute(statement, values)
+        comment_id = cur.fetchone()[0]
+        conn.commit()
 
-            parent_comment = cur.fetchone()
+        response = {'status': StatusCodes['success'], 'results': {'comment_id': comment_id}}
 
-            if not parent_comment:
-                response = {'status': StatusCodes['bad_request'], 'errors': 'Parent comment does not exist'}
-                return flask.jsonify(response)
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'POST /dbproj/comments/{song_id} - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+        conn.rollback()
+    finally:
+        if conn is not None:
+            conn.close()
 
-            # Insert the reply comment
-            statement = '''INSERT INTO comment (song_id, parent_comment_id, comment) VALUES (%s, %s, %s) RETURNING id'''
-            values = (song_id, parent_comment_id, comment)
-            cur.execute(statement, values)
-        else:
-            # Insert the top-level comment
-            statement = '''INSERT INTO comment (song_id, comment) VALUES (%s, %s) RETURNING id'''
-            values = (song_id, comment)
-            cur.execute(statement, values)
+    return flask.jsonify(response)
+
+#Funcionalidade 11.1
+#TODO: Testar e corrigir codigo que se segue
+@app.route('/dbproj/comments/<song_id>/<parent_comment_id>', methods=['POST'])
+def reply_comment(song_id, parent_comment_id):
+    logger.info(f'POST /dbproj/comments/{song_id}')
+
+    payload = flask.request.get_json()
+
+    # Verifying if required field is present in the payload
+    if 'comment' not in payload:
+        response = {'status': StatusCodes['bad_request'], 'errors': 'Missing required field'}
+        return flask.jsonify(response)
+
+    comment = payload['comment']
+
+    conn = db_connection()
+    cur = conn.cursor()
+
+    try:
+
+        # Check if the parent comment exists
+        statement = '''SELECT id FROM comment WHERE id = %s'''
+        values = (parent_comment_id,)
+        cur.execute(statement, values)
+
+        parent_comment = cur.fetchone()
+
+        # Insert the reply comment
+        statement = '''INSERT INTO comment (song_id, parent_comment_id, comment) VALUES (%s, %s, %s) RETURNING id'''
+        values = (song_id, parent_comment_id, comment)
+        cur.execute(statement, values)
 
         comment_id = cur.fetchone()[0]
         conn.commit()
