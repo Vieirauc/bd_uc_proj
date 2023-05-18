@@ -669,7 +669,108 @@ def create_playlist():
 
     return flask.jsonify(response)
 
-    
+#Funcionalidade 11
+#TODO: Testar e corrigir codigo que se segue
+@app.route('/dbproj/comments/<song_id>', methods=['POST'])
+def leave_comment(song_id):
+    logger.info(f'POST /dbproj/comments/{song_id}')
+
+    payload = flask.request.get_json()
+
+    # Verifying if required field is present in the payload
+    if 'comment' not in payload:
+        response = {'status': StatusCodes['bad_request'], 'errors': 'Missing required field'}
+        return flask.jsonify(response)
+
+    comment = payload['comment']
+
+    conn = db_connection()
+    cur = conn.cursor()
+
+    try:
+        if 'parent_comment_id' in payload:
+            parent_comment_id = payload['parent_comment_id']
+
+            # Check if the parent comment exists
+            statement = '''SELECT id FROM comment WHERE id = %s'''
+            values = (parent_comment_id,)
+            cur.execute(statement, values)
+
+            parent_comment = cur.fetchone()
+
+            if not parent_comment:
+                response = {'status': StatusCodes['bad_request'], 'errors': 'Parent comment does not exist'}
+                return flask.jsonify(response)
+
+            # Insert the reply comment
+            statement = '''INSERT INTO comment (song_id, parent_comment_id, comment) VALUES (%s, %s, %s) RETURNING id'''
+            values = (song_id, parent_comment_id, comment)
+            cur.execute(statement, values)
+        else:
+            # Insert the top-level comment
+            statement = '''INSERT INTO comment (song_id, comment) VALUES (%s, %s) RETURNING id'''
+            values = (song_id, comment)
+            cur.execute(statement, values)
+
+        comment_id = cur.fetchone()[0]
+        conn.commit()
+
+        response = {'status': StatusCodes['success'], 'results': {'comment_id': comment_id}}
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'POST /dbproj/comments/{song_id} - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+        conn.rollback()
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
+
+#Funcionalidade 12
+#TODO: Testar e corrigir codigo que se segue
+@app.route('/dbproj/report/<year_month>', methods=['GET'])
+def generate_monthly_report(year_month):
+    logger.info(f'GET /dbproj/report/{year_month}')
+
+    year, month = year_month.split('-')
+
+    conn = db_connection()
+    cur = conn.cursor()
+
+    try:
+        # Execute the SQL query to retrieve the monthly report
+        statement = '''
+            SELECT EXTRACT(MONTH FROM playback_time) AS month, genre, COUNT(*) AS playbacks
+            FROM playback
+            JOIN song ON playback.song_id = song.id
+            WHERE EXTRACT(YEAR FROM playback_time) = %s
+                AND EXTRACT(MONTH FROM playback_time) >= %s
+            GROUP BY EXTRACT(MONTH FROM playback_time), genre
+            ORDER BY month, genre
+        '''
+        values = (year, month)
+        cur.execute(statement, values)
+
+        results = cur.fetchall()
+
+        response = {'status': StatusCodes['success'], 'results': []}
+        for result in results:
+            month_name = calendar.month_name[int(result[0])]
+            genre = result[1]
+            playbacks = result[2]
+            response['results'].append({'month': month_name, 'genre': genre, 'playbacks': playbacks})
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'GET /dbproj/report/{year_month} - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
+
+
 
 ##########################################################
 ## MAIN
