@@ -3754,3 +3754,108 @@ INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:13:55] "POST /dbproj/user HTTP/1.1" 
 INFO:logger:POST /dbproj/user
 DEBUG:logger:POST /dbproj/user - payload: {'username': 'lucas', 'email': 'lucas@gmail.com', 'password': 'lu123', 'role': 'consumer'}
 INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:14:15] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:17:08] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'admin', 'password': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:17:48] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': 'Think Music Records'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:17:53] "[31m[1mPOST /dbproj/user HTTP/1.1[0m" 400 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': 'Think Music Records'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:17:59] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:21:45] "[31m[1mGET /dbproj/song HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:21:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:22:50] "[31m[1mPOST /dbproj/song HTTP/1.1[0m" 400 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'lucas', 'password': 'lu123'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:25:53] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/song
+DEBUG:logger:POST /dbproj/song - payload: {'song_name': 'JAMANTAH', 'release_date': '2023-05-5', 'publisher': 2, 'other_artists': [], 'duration': 240, 'ismn': 1234567899, 'genre': 'Hip-Hop'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:26:00] "[31m[1mPOST /dbproj/song HTTP/1.1[0m" 400 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'Prof', 'password': 'aguadecoco'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:26:07] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/song
+DEBUG:logger:POST /dbproj/song - payload: {'song_name': 'JAMANTAH', 'release_date': '2023-05-5', 'publisher': 2, 'other_artists': [], 'duration': 240, 'ismn': 1234567899, 'genre': 'Hip-Hop'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:26:16] "POST /dbproj/song HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:30:23] "[31m[1mPOST /dbproj/album HTTP/1.1[0m" 400 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1234567899]}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:30:33] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:GET /dbproj/song/<keyword>
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:32:07] "GET /dbproj/song/Bless HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/song
+DEBUG:logger:POST /dbproj/song - payload: {'song_name': 'Bless you', 'release_date': '2023-05-5', 'publisher': 2, 'other_artists': [1], 'duration': 240, 'ismn': 1234567898, 'genre': 'Hip-Hop'}
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:33:16] "POST /dbproj/song HTTP/1.1" 200 -
+INFO:logger:GET /dbproj/song/<keyword>
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:33:20] "GET /dbproj/song/Bless HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:GET /dbproj/artist_info/1
+INFO:werkzeug:127.0.0.1 - - [18/May/2023 23:39:39] "GET /dbproj/artist_info/1 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat

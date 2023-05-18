@@ -169,8 +169,6 @@ def add_user():
         cur.execute(statement,values)
         conn.commit()
 
-        
-
         response = {'status': StatusCodes['success'], 'results': f'User {payload["username"]} created'}
         return flask.jsonify(response)
         
@@ -343,6 +341,16 @@ def add_song(user_id):
     if missing_fields:
         response = {'status': StatusCodes['api_error'], 'results': f'Missing fields: {", ".join(missing_fields)}'}
         return flask.jsonify(response)
+    
+    token = flask.request.headers['x-access-token']
+    try:
+        data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+        user_id = data['user_id']
+        role = data['role']
+        if(role != 'artist'):
+            return flask.jsonify({"alerta": "Need to be logged as artist!"}), 400
+    except:
+        return flask.jsonify({'alerta': 'Invalid Token!'}), 400
 
     song_name = payload['song_name']
     release_date = payload['release_date']
@@ -353,6 +361,7 @@ def add_song(user_id):
     genre = payload['genre']
     
     # Get id of current user from token
+    
 
     try:
         # Inserir a música na tabela "song"
@@ -417,6 +426,16 @@ def add_album(user_id):
     if 'songs' not in payload:
         response = {'status': StatusCodes['api_error'], 'results': 'songs value not in payload'}
         return flask.jsonify(response)
+    
+    token = flask.request.headers['x-access-token']
+    try:
+        data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+        user_id = data['user_id']
+        role = data['role']
+        if(role != 'artist'):
+            return flask.jsonify({"alerta": "Need to be logged as artist!"}), 400
+    except:
+        return flask.jsonify({'alerta': 'Invalid Token!'}), 400
 
     try:
 
@@ -487,7 +506,7 @@ def search_song(keyword):
                         JOIN position p ON s.ismn = p.song_ismn
                         JOIN compilation c ON p.compilation_id = c.id
                         JOIN album al ON c.id = al.compilation_id
-                        WHERE s.name ILIKE '%' || 'Bless' || '%' '''
+                        WHERE s.name LIKE '%' || 'Bless' || '%' '''
 
         #TODO : Add keyword to the query
         #values = (keyword)
