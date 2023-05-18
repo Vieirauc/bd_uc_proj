@@ -710,10 +710,9 @@ def create_playlist():
     return flask.jsonify(response)
 
 #Funcionalidade 11
-#TODO: Testar e corrigir codigo que se segue
-@token_required
 @app.route('/dbproj/comments/<song_id>', methods=['POST'])
-def leave_comment(user_id,song_id):
+@token_required
+def leave_comment(user_id, song_id):
     logger.info(f'POST /dbproj/comments/{song_id}')
 
     payload = flask.request.get_json()
@@ -730,8 +729,8 @@ def leave_comment(user_id,song_id):
 
     try:
         # Insert the top-level comment
-        statement = '''INSERT INTO comment (song_ismn, body, consumer_account_id) VALUES (%s, %s) RETURNING id'''
-        values = (song_id, comment)
+        statement = '''INSERT INTO comment (song_ismn, body, consumer_account_id,datetime) VALUES (%s, %s, %s, %s) RETURNING id'''
+        values = (song_id,comment,user_id, datetime.now())
         cur.execute(statement, values)
 
         comment_id = cur.fetchone()[0]
@@ -750,9 +749,9 @@ def leave_comment(user_id,song_id):
     return flask.jsonify(response)
 
 #Funcionalidade 11.1
-#TODO: Testar e corrigir codigo que se segue
 @app.route('/dbproj/comments/<song_id>/<parent_comment_id>', methods=['POST'])
-def reply_comment(song_id, parent_comment_id):
+@token_required
+def reply_comment(user_id,song_id, parent_comment_id):
     logger.info(f'POST /dbproj/comments/{song_id}')
 
     payload = flask.request.get_json()
@@ -777,8 +776,8 @@ def reply_comment(song_id, parent_comment_id):
         parent_comment = cur.fetchone()
 
         # Insert the reply comment
-        statement = '''INSERT INTO comment (song_id, parent_comment_id, comment) VALUES (%s, %s, %s) RETURNING id'''
-        values = (song_id, parent_comment_id, comment)
+        statement = '''INSERT INTO comment (song_ismn, body, datetime, consumer_account_id, comment_id) VALUES (%s, %s, %s, %s,%s) RETURNING id'''
+        values = (song_id, comment, datetime.now(), user_id ,parent_comment_id)
         cur.execute(statement, values)
 
         comment_id = cur.fetchone()[0]

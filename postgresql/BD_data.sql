@@ -87,7 +87,7 @@ CREATE TABLE comment (
 	datetime		 TIMESTAMP NOT NULL,
 	song_ismn		 INTEGER NOT NULL,
 	consumer_account_id BIGINT NOT NULL,
-	comment_id		 INTEGER NOT NULL,
+	comment_id		 INTEGER , --estava NOT NULL no codigo do onda
 	PRIMARY KEY(id)
 );
 

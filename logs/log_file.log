@@ -3866,3 +3866,336 @@ API v1.1 online: http://localhost:8080/
 
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:30:42] "[35m[1mPOST /dbproj/comments/12255099 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:31:32] "[35m[1mPOST /dbproj/comments/12255099 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:31:56] "[35m[1mPOST /dbproj/comments/12255099 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:32:45] "[35m[1mPOST /dbproj/comments/12255099 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:33:14] "[35m[1mPOST /dbproj/comments/12255099 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:35:49] "[31m[1mPOST /dbproj/comments/12255099 HTTP/1.1[0m" 400 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'lucas', 'password': 'lu123'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:35:53] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: not all arguments converted during string formatting
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:36:09] "POST /dbproj/comments/12255099 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: null value in column "datetime" of relation "comment" violates not-null constraint
+DETAIL:  Failing row contains (1, comentario bem top, null, 12255099, 3, null).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:36:28] "POST /dbproj/comments/12255099 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: null value in column "comment_id" of relation "comment" violates not-null constraint
+DETAIL:  Failing row contains (2, comentario bem top, 2023-05-19 00:37:00.369365, 12255099, 3, null).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:37:00] "POST /dbproj/comments/12255099 HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: null value in column "comment_id" of relation "comment" violates not-null constraint
+DETAIL:  Failing row contains (3, comentario bem top, 2023-05-19 00:38:29.763723, 12255099, 3, null).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:38:29] "POST /dbproj/comments/12255099 HTTP/1.1" 200 -
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: insert or update on table "comment" violates foreign key constraint "comment_fk1"
+DETAIL:  Key (song_ismn)=(12255099) is not present in table "song".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:39:03] "POST /dbproj/comments/12255099 HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'Prof', 'password': 'aguadecoco'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:39:17] "[35m[1mPUT /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': 'Think Music Records'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:39:23] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'Prof', 'password': 'aguadecoco'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:39:25] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1234567899]}
+ERROR:logger:POST /dbproj/album - error: insert or update on table "position" violates foreign key constraint "position_fk1"
+DETAIL:  Key (song_ismn)=(1234567899) is not present in table "song".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:39:33] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/song
+DEBUG:logger:POST /dbproj/song - payload: {'song_name': 'Bless you', 'release_date': '2023-05-5', 'publisher': 2, 'other_artists': [1], 'duration': 240, 'ismn': 1234567898, 'genre': 'Hip-Hop'}
+ERROR:logger:POST /dbproj/song - error: insert or update on table "song" violates foreign key constraint "song_fk1"
+DETAIL:  Key (artist_account_id)=(5) is not present in table "artist".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:39:39] "POST /dbproj/song HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/song
+DEBUG:logger:POST /dbproj/song - payload: {'song_name': 'Bless', 'release_date': '2023-05-5', 'publisher': 2, 'other_artists': [], 'duration': 240, 'ismn': 1234567898, 'genre': 'Hip-Hop'}
+ERROR:logger:POST /dbproj/song - error: insert or update on table "song" violates foreign key constraint "song_fk1"
+DETAIL:  Key (artist_account_id)=(5) is not present in table "artist".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:39:52] "POST /dbproj/song HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/song
+DEBUG:logger:POST /dbproj/song - payload: {'song_name': 'Bless', 'release_date': '2023-05-5', 'publisher': 2, 'other_artists': [], 'duration': 240, 'ismn': 1234567898, 'genre': 'Hip-Hop'}
+ERROR:logger:POST /dbproj/song - error: insert or update on table "song" violates foreign key constraint "song_fk1"
+DETAIL:  Key (artist_account_id)=(5) is not present in table "artist".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:40:04] "POST /dbproj/song HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1234567899]}
+ERROR:logger:POST /dbproj/album - error: insert or update on table "position" violates foreign key constraint "position_fk1"
+DETAIL:  Key (song_ismn)=(1234567899) is not present in table "song".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:40:13] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'Prof', 'password': 'aguadecoco'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:41:24] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/song
+DEBUG:logger:POST /dbproj/song - payload: {'song_name': 'Bless', 'release_date': '2023-05-5', 'publisher': 2, 'other_artists': [], 'duration': 240, 'ismn': 1234567898, 'genre': 'Hip-Hop'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:41:31] "POST /dbproj/song HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1234567899]}
+ERROR:logger:POST /dbproj/album - error: insert or update on table "position" violates foreign key constraint "position_fk1"
+DETAIL:  Key (song_ismn)=(1234567899) is not present in table "song".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:41:36] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1234567898]}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:41:51] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/comments/12255098
+ERROR:logger:POST /dbproj/comments/12255098 - error: insert or update on table "comment" violates foreign key constraint "comment_fk1"
+DETAIL:  Key (song_ismn)=(12255098) is not present in table "song".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:42:07] "POST /dbproj/comments/12255098 HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: insert or update on table "comment" violates foreign key constraint "comment_fk2"
+DETAIL:  Key (consumer_account_id)=(3) is not present in table "consumer".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:42:16] "POST /dbproj/comments/12255099 HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: insert or update on table "comment" violates foreign key constraint "comment_fk2"
+DETAIL:  Key (consumer_account_id)=(3) is not present in table "consumer".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:42:24] "POST /dbproj/comments/12255099 HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'lucas', 'password': 'lu123'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:42:27] "[35m[1mPUT /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'lucas', 'email': 'lucas@gmail.com', 'password': 'lu123', 'role': 'consumer'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:42:33] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'lucas', 'password': 'lu123'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:42:35] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/comments/12255099
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:42:42] "POST /dbproj/comments/12255099 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:46:17] "[31m[1mGET /dbproj/comments/12255099/5 HTTP/1.1[0m" 405 -
+INFO:logger:POST /dbproj/comments/12255099
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:46:22] "[31m[1mPOST /dbproj/comments/12255099/5 HTTP/1.1[0m" 415 -
+INFO:logger:POST /dbproj/comments/12255099
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:47:04] "[31m[1mPOST /dbproj/comments/12255099/5 HTTP/1.1[0m" 415 -
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: column "song_id" of relation "comment" does not exist
+LINE 1: INSERT INTO comment (song_id, body, datetime, consumer_accou...
+                             ^
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:47:10] "POST /dbproj/comments/12255099/5 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: column "ismn" of relation "comment" does not exist
+LINE 1: INSERT INTO comment (ismn, body, datetime, consumer_account_...
+                             ^
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:47:49] "POST /dbproj/comments/12255099/5 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: column "parent_comment_id" of relation "comment" does not exist
+LINE 1: ... (song_ismn, body, datetime, consumer_account_id, parent_com...
+                                                             ^
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:48:08] "POST /dbproj/comments/12255099/5 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/comments/12255099
+ERROR:logger:POST /dbproj/comments/12255099 - error: column "datetime" is of type timestamp without time zone but expression is of type integer
+LINE 1: ...t_id) VALUES ('12255099', 'pois é bro , bem top', 4, '5','po...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:48:33] "POST /dbproj/comments/12255099/5 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/comments/12255099
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 00:49:16] "POST /dbproj/comments/12255099/5 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
