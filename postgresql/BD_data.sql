@@ -71,7 +71,7 @@ CREATE TABLE album (
 	PRIMARY KEY(compilation_id)
 );
 
-CREATE TABLE subscripton (
+CREATE TABLE subscription (
 	id			 SERIAL NOT NULL,
 	start_date		 DATE NOT NULL,
 	limit_date		 DATE NOT NULL,
@@ -140,9 +140,9 @@ ALTER TABLE card ADD CONSTRAINT card_fk2 FOREIGN KEY (administrator_account_id) 
 ALTER TABLE card ADD CONSTRAINT amount CHECK (amount >= 0 AND amount <= 50); -- alterado do onda para "amount >= 0 AND amount <= 50"
 ALTER TABLE album ADD CONSTRAINT album_fk1 FOREIGN KEY (artist_account_id) REFERENCES artist(account_id);
 ALTER TABLE album ADD CONSTRAINT album_fk2 FOREIGN KEY (compilation_id) REFERENCES compilation(id);
-ALTER TABLE subscripton ADD CONSTRAINT subscripton_fk1 FOREIGN KEY (card_id) REFERENCES card(id);
-ALTER TABLE subscripton ADD CONSTRAINT subscripton_fk2 FOREIGN KEY (consumer_account_id) REFERENCES consumer(account_id);
-ALTER TABLE subscripton ADD CONSTRAINT cost CHECK (cost > 0);
+ALTER TABLE subscription ADD CONSTRAINT subscription_fk1 FOREIGN KEY (card_id) REFERENCES card(id);
+ALTER TABLE subscription ADD CONSTRAINT subscription_fk2 FOREIGN KEY (consumer_account_id) REFERENCES consumer(account_id);
+ALTER TABLE subscription ADD CONSTRAINT cost CHECK (cost > 0);
 ALTER TABLE comment ADD CONSTRAINT comment_fk1 FOREIGN KEY (song_ismn) REFERENCES song(ismn);
 ALTER TABLE comment ADD CONSTRAINT comment_fk2 FOREIGN KEY (consumer_account_id) REFERENCES consumer(account_id);
 ALTER TABLE comment ADD CONSTRAINT comment_fk3 FOREIGN KEY (comment_id) REFERENCES comment(id);

@@ -117,8 +117,7 @@ def landing_page():
     
 #Funcionalidade 1
 @app.route('/dbproj/user', methods=['POST'])
-@token_required
-def add_user(data):
+def add_user():
     logger.info('POST /dbproj/user')
     payload = flask.request.get_json()
 
@@ -195,6 +194,12 @@ def add_user(data):
         
     #Add artist and resquest admin token in header
     elif(payload['role'] == 'artist'):
+
+        token = flask.request.headers['x-access-token']
+        data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+        if data['role'] != 'admin':
+            response = {'status': StatusCodes['api_error'], 'results': 'Only admin can add artist'}
+            return flask.jsonify(response)
         
         if data['role'] != 'admin':
             response = {'status': StatusCodes['api_error'], 'results': 'Only admin can add artist'}
@@ -648,7 +653,7 @@ def subscribe_to_premium(data):
 
     try:
         # Check if user has a subscription already
-        statement = '''SELECT * FROM subscripton WHERE consumer_account_id = %s'''
+        statement = '''SELECT * FROM subscription WHERE consumer_account_id = %s'''
         values = (user_id,)
         cur.execute(statement, values)
         result = cur.fetchone()
@@ -688,9 +693,14 @@ def subscribe_to_premium(data):
         cost_left = cost
         for card in cards:
             if cost_left > 0:
-                cost_left -= card_amounts[card]
 
-                card_final_amount = card_amounts[card] - cost_left
+                if cost_left > card_amounts[card]:
+                    card_final_amount = 0
+                    cost_left -= card_amounts[card]
+                else:
+                    card_final_amount = card_amounts[card] - cost_left
+                    cost_left = 0
+
                 if card_final_amount < 0:
                     card_final_amount = 0
 
@@ -699,12 +709,19 @@ def subscribe_to_premium(data):
                 cur.execute(statement, values)
         
         datetimeval = datetime.now()
-        statement = '''INSERT INTO subscripton (start_date,limit_date,type,cost,datetime,card_id,consumer_account_id)
+        statement = '''INSERT INTO subscription (start_date,limit_date,type,cost,datetime,card_id,consumer_account_id)
                         VALUES (%s,%s,%s,%s,%s,%s,%s) RETURNING id'''
         values = (start_date,limit_date,type,cost,datetimeval,card,user_id)
         cur.execute(statement, values)
 
         subscription_id = cur.fetchone()[0]
+
+        #Change consumer premium bool to true
+        
+        #statement = '''UPDATE consumer SET premium = TRUE WHERE account_id = %s'''
+        #values = (user_id,)
+        #cur.execute(statement, values)
+        
 
         conn.commit()
 
@@ -818,7 +835,7 @@ def generate_cards(data):
         return flask.jsonify(response)
     
 
-    if data['role'] != 'administrator':
+    if data['role'] != 'admin':
         response = {'status': StatusCodes['unauthorized'], 'errors': 'Only administrators can generate cards'}
         return flask.jsonify(response)
     
