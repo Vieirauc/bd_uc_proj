@@ -136,98 +136,109 @@ def add_user():
         response = {'status': StatusCodes['api_error'], 'results': 'role value not in payload'}
         return flask.jsonify(response)
     
-    # parameterized queries, good for security and performance
-    if(payload['role'] == 'admin'):
-        statement = '''
-            INSERT INTO account (username, email, password_hash)
-            VALUES (%s, %s, %s)
-            RETURNING id
-        '''
-        values = (payload['username'], payload['email'], hash_password(payload['password']))
-        cur.execute(statement, values)
-        account_id = cur.fetchone()[0]
+    try:
+    
+        # parameterized queries, good for security and performance
+        if(payload['role'] == 'admin'):
+            statement = '''
+                INSERT INTO account (username, email, password_hash)
+                VALUES (%s, %s, %s)
+                RETURNING id
+            '''
+            values = (payload['username'], payload['email'], hash_password(payload['password']))
+            cur.execute(statement, values)
+            account_id = cur.fetchone()[0]
 
-        statement = '''
-            INSERT INTO administrator (account_id)
-            VALUES (%s)
-        '''
-        values = (account_id,)
-        cur.execute(statement, values)
-        conn.commit()
+            statement = '''
+                INSERT INTO administrator (account_id)
+                VALUES (%s)
+            '''
+            values = (account_id,)
+            cur.execute(statement, values)
+            conn.commit()
 
-        response = {'status': StatusCodes['success'], 'results': f'User {payload["username"]} created'}
-        return flask.jsonify(response)
-
-    elif(payload['role'] == 'consumer'):
-        statement = '''
-            INSERT INTO account (username, email, password_hash)
-            VALUES (%s, %s, %s)
-            RETURNING id
-        '''
-        values = (payload['username'], payload['email'], hash_password(payload['password']))
-        cur.execute(statement, values)
-        account_id = cur.fetchone()[0]
-
-        statement = '''
-            INSERT INTO compilation (nome) VALUES (NULL) RETURNING id
-        '''
-        values = (account_id,)
-        cur.execute(statement)
-        top10_id = cur.fetchone()[0]
-
-        statement = '''
-            INSERT INTO consumer (account_id,premium,top10_id)
-            VALUES (%s,DEFAULT,%s)
-        '''
-        values = (account_id,top10_id)
-        cur.execute(statement, values)
-
-        statement = '''
-            INSERT INTO playlist (consumer_account_id,compilation_id) VALUES (%s,%s)
-        '''
-        values = (account_id,top10_id)
-        cur.execute(statement,values)
-        conn.commit()
-
-        response = {'status': StatusCodes['success'], 'results': f'User {payload["username"]} created'}
-        return flask.jsonify(response)
-        
-    #Add artist and resquest admin token in header
-    elif(payload['role'] == 'artist'):
-
-        token = flask.request.headers['x-access-token']
-        data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-        if data['role'] != 'admin':
-            response = {'status': StatusCodes['api_error'], 'results': 'Only admin can add artist'}
+            response = {'status': StatusCodes['success'], 'results': f'User {payload["username"]} created'}
             return flask.jsonify(response)
-        
-        if data['role'] != 'admin':
-            response = {'status': StatusCodes['api_error'], 'results': 'Only admin can add artist'}
+
+        elif(payload['role'] == 'consumer'):
+            statement = '''
+                INSERT INTO account (username, email, password_hash)
+                VALUES (%s, %s, %s)
+                RETURNING id
+            '''
+            values = (payload['username'], payload['email'], hash_password(payload['password']))
+            cur.execute(statement, values)
+            account_id = cur.fetchone()[0]
+
+            statement = '''
+                INSERT INTO compilation (nome) VALUES (NULL) RETURNING id
+            '''
+            values = (account_id,)
+            cur.execute(statement)
+            top10_id = cur.fetchone()[0]
+
+            statement = '''
+                INSERT INTO consumer (account_id,premium,top10_id)
+                VALUES (%s,DEFAULT,%s)
+            '''
+            values = (account_id,top10_id)
+            cur.execute(statement, values)
+
+            statement = '''
+                INSERT INTO playlist (consumer_account_id,compilation_id) VALUES (%s,%s)
+            '''
+            values = (account_id,top10_id)
+            cur.execute(statement,values)
+            conn.commit()
+
+            response = {'status': StatusCodes['success'], 'results': f'User {payload["username"]} created'}
             return flask.jsonify(response)
-        
-        statement = '''
-            INSERT INTO account (username, email, password_hash)
-            VALUES (%s, %s, %s)
-            RETURNING id
-        '''
-        values = (payload['username'], payload['email'], hash_password(payload['password']))
-        cur.execute(statement, values)
-        account_id = cur.fetchone()[0]
+            
+        #Add artist and resquest admin token in header
+        elif(payload['role'] == 'artist'):
 
-        statement = '''
-            WITH publisher_id_cte AS (
-            SELECT id
-            FROM publisher
-            WHERE name = %s
-            )
-            INSERT INTO artist (account_id, artistic_name, publisher_id)
-            VALUES (%s, %s, (SELECT id FROM publisher_id_cte));
-        '''
-        values = (payload['publisher'],account_id,payload['artistic_name'])
-        cur.execute(statement, values)
-        conn.commit()
+            token = flask.request.headers['x-access-token']
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+            if data['role'] != 'admin':
+                response = {'status': StatusCodes['api_error'], 'results': 'Only admin can add artist'}
+                return flask.jsonify(response)
+            
+            if data['role'] != 'admin':
+                response = {'status': StatusCodes['api_error'], 'results': 'Only admin can add artist'}
+                return flask.jsonify(response)
+            
+            statement = '''
+                LOCK TABLE publisher IN SHARE ROW EXCLUSIVE MODE;
+                INSERT INTO account (username, email, password_hash)
+                VALUES (%s, %s, %s)
+                RETURNING id
+            '''
+            values = (payload['username'], payload['email'], hash_password(payload['password']))
+            cur.execute(statement, values)
+            account_id = cur.fetchone()[0]
 
-        response = {'status': StatusCodes['success'], 'results': f'User {payload["username"]} created'}
+            statement = '''
+                LOCK TABLE publisher IN SHARE ROW EXCLUSIVE MODE;
+                WITH publisher_id_cte AS (
+                SELECT id
+                FROM publisher
+                WHERE name = %s
+                )
+                INSERT INTO artist (account_id, artistic_name, publisher_id)
+                VALUES (%s, %s, (SELECT id FROM publisher_id_cte));
+            '''
+            values = (payload['publisher'],account_id,payload['artistic_name'])
+            cur.execute(statement, values)
+            conn.commit()
+
+            response = {'status': StatusCodes['success'], 'results': f'User {payload["username"]} created'}
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'POST /dbproj/user - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+        conn.rollback()
+    finally:
+        if conn is not None:
+            conn.close()
 
     return flask.jsonify(response)
 
@@ -653,7 +664,8 @@ def subscribe_to_premium(data):
 
     try:
         # Check if user has a subscription already
-        statement = '''SELECT * FROM subscription WHERE consumer_account_id = %s'''
+        statement = '''LOCK TABLE subscription IN SHARE ROW EXCLUSIVE MODE;
+        SELECT * FROM subscription WHERE consumer_account_id = %s'''
         values = (user_id,)
         cur.execute(statement, values)
         result = cur.fetchone()
@@ -679,7 +691,8 @@ def subscribe_to_premium(data):
         #Get amounts from cards and check if they are enough
         card_amounts = {}
         for card in cards:
-            statement = '''SELECT amount FROM card WHERE id = %s'''
+            statement = '''LOCK TABLE card IN SHARE ROW EXCLUSIVE MODE;
+            SELECT amount FROM card WHERE id = %s'''
             values = (card,)
             cur.execute(statement, values)
             card_amounts[card] = cur.fetchone()[0]
