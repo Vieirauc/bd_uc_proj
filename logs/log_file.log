@@ -6479,3 +6479,103 @@ API v1.1 online: http://localhost:8080/
 
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:PUT /dbproj/1
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:09:33] "PUT /dbproj/1 HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/1
+ERROR:logger:POST /dbproj/<int:song_ismn> - error: insert or update on table "streaming" violates foreign key constraint "streaming_fk1"
+DETAIL:  Key (consumer_account_id)=(11) is not present in table "consumer".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:14:17] "PUT /dbproj/1 HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'lucas', 'email': 'lucas@gmail.com', 'password': 'lu123', 'role': 'consumer'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:14:26] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'lucas', 'password': 'lu123'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:14:28] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/1
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:14:42] "PUT /dbproj/1 HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/1
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:14:59] "PUT /dbproj/1 HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/2
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:15:10] "PUT /dbproj/2 HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/5
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:15:17] "PUT /dbproj/5 HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:15:56] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': 'Think Music Records'}
+ERROR:logger:POST /dbproj/user - error: 'HTTP_X_ACCESS_TOKEN'
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:15:58] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'admin', 'password': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:16:03] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'admin', 'password': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:16:38] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': 'Think Music Records'}
+ERROR:logger:POST /dbproj/user - error: null value in column "publisher_id" of relation "artist" violates not-null constraint
+DETAIL:  Failing row contains (ProfJam, null, 13).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:17:00] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': 'Think Music Records'}
+ERROR:logger:POST /dbproj/user - error: null value in column "publisher_id" of relation "artist" violates not-null constraint
+DETAIL:  Failing row contains (ProfJam, null, 14).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:18:49] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': '2'}
+ERROR:logger:POST /dbproj/user - error: null value in column "publisher_id" of relation "artist" violates not-null constraint
+DETAIL:  Failing row contains (ProfJam, null, 15).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:18:53] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': '2'}
+ERROR:logger:POST /dbproj/user - error: null value in column "publisher_id" of relation "artist" violates not-null constraint
+DETAIL:  Failing row contains (ProfJam, null, 16).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:18:55] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': '2'}
+ERROR:logger:POST /dbproj/user - error: not all arguments converted during string formatting
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:19:51] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat

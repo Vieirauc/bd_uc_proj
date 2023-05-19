@@ -208,7 +208,7 @@ def add_user():
                 return flask.jsonify(response)
             
             statement = '''
-                LOCK TABLE publisher IN SHARE ROW EXCLUSIVE MODE;
+                LOCK TABLE account IN SHARE ROW EXCLUSIVE MODE;
                 INSERT INTO account (username, email, password_hash)
                 VALUES (%s, %s, %s)
                 RETURNING id
@@ -218,16 +218,11 @@ def add_user():
             account_id = cur.fetchone()[0]
 
             statement = '''
-                LOCK TABLE publisher IN SHARE ROW EXCLUSIVE MODE;
-                WITH publisher_id_cte AS (
-                SELECT id
-                FROM publisher
-                WHERE name = %s
-                )
+                LOCK TABLE artist IN SHARE ROW EXCLUSIVE MODE;
                 INSERT INTO artist (account_id, artistic_name, publisher_id)
-                VALUES (%s, %s, (SELECT id FROM publisher_id_cte));
+                VALUES (%s, %s, %s);
             '''
-            values = (payload['publisher'],account_id,payload['artistic_name'])
+            values = (account_id,payload['artistic_name'],payload['publisher'])
             cur.execute(statement, values)
             conn.commit()
 
@@ -809,23 +804,31 @@ def create_playlist():
 @app.route('/dbproj/<int:song_ismn>', methods=['PUT'])
 @token_required
 def play_song(data, song_ismn):
-    user_id = data['user_id']
     logger.info(f'PUT /dbproj/{song_ismn}')
+    user_id = data['user_id']
 
-    # Get the current user's top 10 played songs
-    user_top_songs = get_user_top_songs(user_id)
+    conn = db_connection()
+    cur = conn.cursor()
 
-    # Increment the play count for the played song
-    update_play_count(song_ismn)
+    try:
+        # Update the streaming table
+        statement = '''INSERT INTO streaming (datetime, consumer_account_id, song_ismn)
+                        VALUES (CURRENT_TIMESTAMP, %s, %s)'''
+        
+        cur.execute(statement, (user_id, song_ismn))
+        
+        conn.commit()
+        response = {'status': StatusCodes['success']}
+    
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'POST /dbproj/<int:song_ismn> - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+        conn.rollback()
+    finally:
+        if conn is not None:
+            conn.close()
+            
 
-    # Update the user's top 10 played songs if necessary
-    if song_ismn in user_top_songs:
-        user_top_songs.remove(song_ismn)
-    user_top_songs.append(song_ismn)
-    user_top_songs = sorted(user_top_songs, key=lambda x: get_play_count(x), reverse=True)[:10]
-    update_user_top_songs(user_id, user_top_songs)
-
-    response = {'status': StatusCodes['success']}
     return flask.jsonify(response)
 
 #Funcionalidade 10

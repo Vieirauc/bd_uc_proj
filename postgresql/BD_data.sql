@@ -192,6 +192,41 @@ BEGIN
 END
 $$ LANGUAGE plpgsql strict immutable;
 
+CREATE OR REPLACE FUNCTION updateTop10()
+RETURNS TRIGGER 
+AS
+$$
+DECLARE
+    idvar INTEGER;
+    higher_pos INTEGER = 0;
+
+BEGIN
+    SELECT compilation_id INTO idvar FROM playlist WHERE consumer_account_id = NEW.consumer_account_id AND compilation_id IN (SELECT id FROM compilation WHERE nome IS NULL);
+
+    SELECT MAX(position) INTO higher_pos FROM position WHERE compilation_id = idvar;
+
+    IF higher_pos IS NULL THEN higher_pos := 0; END IF;
+
+    IF (
+        SELECT COUNT(*) FROM position
+        WHERE compilation_id = idvar
+          AND song_ismn = NEW.song_ismn
+    ) = 0 AND higher_pos < 10 THEN
+        INSERT INTO position (position, song_ismn, compilation_id)
+        VALUES (higher_pos + 1, NEW.song_ismn, idvar);
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER updateTop10
+AFTER INSERT
+ON streaming
+FOR EACH ROW
+EXECUTE PROCEDURE updateTop10();
+
 BEGIN TRANSACTION;
 
 -- Insert entries into the 'account' table
