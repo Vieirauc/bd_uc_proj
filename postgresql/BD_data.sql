@@ -133,7 +133,7 @@ ALTER TABLE playlist ADD CONSTRAINT playlist_fk2 FOREIGN KEY (compilation_id) RE
 ALTER TABLE song ADD CONSTRAINT song_fk1 FOREIGN KEY (artist_account_id) REFERENCES artist(account_id);
 ALTER TABLE song ADD CONSTRAINT song_fk2 FOREIGN KEY (publisher_id) REFERENCES publisher(id);
 ALTER TABLE song ADD CONSTRAINT duration CHECK (duration > 0);
-ALTER TABLE card ADD CONSTRAINT card_fk1 FOREIGN KEY (consumer_account_id) REFERENCES consumer(account_id);
+--ALTER TABLE card ADD CONSTRAINT card_fk1 FOREIGN KEY (consumer_account_id) REFERENCES consumer(account_id);
 ALTER TABLE card ADD CONSTRAINT card_fk2 FOREIGN KEY (administrator_account_id) REFERENCES administrator(account_id);
 ALTER TABLE card ADD CONSTRAINT amount CHECK (amount > 0 AND amount < 50);
 ALTER TABLE album ADD CONSTRAINT album_fk1 FOREIGN KEY (artist_account_id) REFERENCES artist(account_id);

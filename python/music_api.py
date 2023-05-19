@@ -12,6 +12,7 @@
 ##
  
 import hashlib
+import random
 import flask
 import logging, psycopg2, time
 import jwt
@@ -40,6 +41,23 @@ def check_password(password, hash):
         return True
     else:
         return False
+    
+def generate_card_id(cur):
+    while True:
+        card_id = random.randint(1000000000000000, 9999999999999999)
+        if not card_exists(card_id, cur):
+            return card_id
+
+def card_exists(card_id , cur):
+    statement = '''
+        SELECT id FROM card WHERE id = %s
+    '''
+    values = (card_id,)
+    cur.execute(statement, values)
+    if cur.fetchone():
+        return True
+    else:
+        return False
 
 #########################################################
 ## TOKEN REQUIRED
@@ -55,6 +73,7 @@ def token_required(func):
 
         if not token:
             return flask.jsonify({"alerta": "Missing Token!"}), 400
+        
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
             user_id = data['user_id']
@@ -257,7 +276,7 @@ def login_user():
             token = jwt.encode({
                 'user_id': account_id,
                 'role': 'admin',
-                'exp': utc_dt_aware + timedelta(minutes = 120)
+                #'exp': utc_dt_aware + timedelta(minutes = 120)
             },
                 app.config['SECRET_KEY'], algorithm='HS256')
             
@@ -744,15 +763,38 @@ def generate_cards(user_id):
     if not num_cards or not card_price:
         response = {'status': StatusCodes['bad_request'], 'errors': 'Both number_cards and card_price are required'}
         return flask.jsonify(response)
+    
+    if card_price != 5 and card_price != 10 and card_price != 25 and card_price != 50:
+        response = {'status': StatusCodes['bad_request'], 'errors': 'Invalid card price'}
+        return flask.jsonify(response)
+    
 
+    token = flask.request.headers.get('token')
+    try:
+        print("got here")
+        data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
+        user_id = data['user_id']
+        role = data['role']
+        if(role != 'admin'):
+            return flask.jsonify({"alerta": "Need admin permission!"}), 400
+    except:
+        return flask.jsonify({'alerta': 'Invalid Token!'}), 400
+    
     try:
         conn = db_connection()
         cur = conn.cursor()
 
         card_ids = []
         for i in range(num_cards):
-            cur.execute('INSERT INTO prepaid_card (price, created_by) VALUES (%s, %s) RETURNING id', (card_price, user_id))
-            card_id = cur.fetchone()[0]
+            card_id = generate_card_id(cur)
+            limit_date = datetime.datetime.now() + datetime.timedelta(days=30)
+            issue_date = datetime.datetime.now()
+            statement = '''INSERT INTO prepaid_card 
+                        (id, limit_date, amount, issue_date, administrator_account_id) 
+                        VALUES (%s,%s, %s, %s, %s) 
+                        RETURNING id'''
+            values = (card_id, limit_date, card_price, issue_date, user_id)
+            cur.execute(statement, values)
             card_ids.append(card_id)
 
         conn.commit()
