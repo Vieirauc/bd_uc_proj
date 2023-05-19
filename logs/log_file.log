@@ -6579,3 +6579,44 @@ ERROR:logger:POST /dbproj/user - error: not all arguments converted during strin
 INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:19:51] "POST /dbproj/user HTTP/1.1" 200 -
 INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
 INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': '2'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:20:18] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'Prof', 'password': 'aguadecoco'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:20:38] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/song
+DEBUG:logger:POST /dbproj/song - payload: {'song_name': 'Bless', 'release_date': '2023-05-5', 'publisher': 2, 'other_artists': [], 'duration': 240, 'ismn': 1234567899, 'genre': 'Hip-Hop'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:20:47] "POST /dbproj/song HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:21:09] "[31m[1mPOST /dbproj/album HTTP/1.1[0m" 400 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1234567899]}
+ERROR:logger:POST /dbproj/album - error: insert or update on table "album" violates foreign key constraint "album_fk1"
+DETAIL:  Key (artist_account_id)=(1) is not present in table "artist".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:21:14] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [1, 2]}, 1234567899]}
+ERROR:logger:POST /dbproj/album - error: insert or update on table "album" violates foreign key constraint "album_fk1"
+DETAIL:  Key (artist_account_id)=(1) is not present in table "artist".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:21:27] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [7, 8]}, 1234567899]}
+ERROR:logger:POST /dbproj/album - error: insert or update on table "album" violates foreign key constraint "album_fk1"
+DETAIL:  Key (artist_account_id)=(1) is not present in table "artist".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:21:49] "POST /dbproj/album HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/album
+DEBUG:logger:POST /dbproj/album - payload: {'name': 'MDID - “Música De Intervenção Divina”', 'release_date': '2023-05-18', 'publisher': 1, 'songs': [{'song_name': 'Bless', 'release_date': '2023-05-4', 'publisher': 1, 'ismn': 12255099, 'genre': 'Hip-Hop', 'duration': 189, 'other_artists': [7, 8]}, 1234567899]}
+ERROR:logger:POST /dbproj/album - error: insert or update on table "album" violates foreign key constraint "album_fk1"
+DETAIL:  Key (artist_account_id)=(1) is not present in table "artist".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 23:22:10] "POST /dbproj/album HTTP/1.1" 200 -
