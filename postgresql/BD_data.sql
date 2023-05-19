@@ -53,15 +53,17 @@ CREATE TABLE song (
 	PRIMARY KEY(ismn)
 );
 
+CREATE SEQUENCE card_id_seq AS BIGINT START WITH 1 INCREMENT BY 1;
 CREATE TABLE card (
 	id			 BIGINT NOT NULL,
 	limit_date		 TIMESTAMP NOT NULL,
 	amount			 FLOAT(8) NOT NULL,
 	issue_date		 TIMESTAMP NOT NULL,
-	consumer_account_id	 BIGINT NOT NULL,
+	--consumer_account_id	 BIGINT NOT NULL,
 	administrator_account_id BIGINT NOT NULL,
 	PRIMARY KEY(id)
 );
+ALTER SEQUENCE card_id_seq OWNED BY card.id;
 
 CREATE TABLE album (
 	artist_account_id BIGINT NOT NULL,
@@ -135,7 +137,7 @@ ALTER TABLE song ADD CONSTRAINT song_fk2 FOREIGN KEY (publisher_id) REFERENCES p
 ALTER TABLE song ADD CONSTRAINT duration CHECK (duration > 0);
 --ALTER TABLE card ADD CONSTRAINT card_fk1 FOREIGN KEY (consumer_account_id) REFERENCES consumer(account_id);
 ALTER TABLE card ADD CONSTRAINT card_fk2 FOREIGN KEY (administrator_account_id) REFERENCES administrator(account_id);
-ALTER TABLE card ADD CONSTRAINT amount CHECK (amount > 0 AND amount < 50);
+ALTER TABLE card ADD CONSTRAINT amount CHECK (amount >= 0 AND amount <= 50); -- alterado do onda para "amount >= 0 AND amount <= 50"
 ALTER TABLE album ADD CONSTRAINT album_fk1 FOREIGN KEY (artist_account_id) REFERENCES artist(account_id);
 ALTER TABLE album ADD CONSTRAINT album_fk2 FOREIGN KEY (compilation_id) REFERENCES compilation(id);
 ALTER TABLE subscripton ADD CONSTRAINT subscripton_fk1 FOREIGN KEY (card_id) REFERENCES card(id);
@@ -156,6 +158,39 @@ ALTER TABLE consumer
     ALTER CONSTRAINT consumer_fk1
     DEFERRABLE INITIALLY DEFERRED;
 
+
+CREATE FUNCTION pseudo_encrypt(VALUE bigint) returns bigint AS $$
+DECLARE
+	l1 bigint;
+	l2 bigint;
+	r1 bigint;
+	r2 bigint;
+	i bigint:=0;
+BEGIN
+	l1:= (VALUE >> 12) & (4096-1);
+	r1:= VALUE & (4096-1);
+ WHILE i < 3 LOOP
+	l2 := r1;
+	r2 := l1 # ((((1366 * r1 + 150889) % 714025) / 714025.0) * (4096-1))::bigint;
+	l1 := l2;
+	r1 := r2;
+	i := i + 1;
+ END LOOP;
+ RETURN ((l1 << 12) + r1);
+END;
+$$ LANGUAGE plpgsql strict immutable;
+
+CREATE FUNCTION bounded_pseudo_encrypt(VALUE bigint, min bigint, max bigint) returns bigint AS $$
+BEGIN
+  --loop
+	--value := pseudo_encrypt(value);
+	--exit when value <= max;
+  --end loop;
+  value:= pseudo_encrypt(value);
+  value:= CAST((2147483647 - value) as FLOAT)/2147483647 * (max - min) + min;
+  return value;
+END
+$$ LANGUAGE plpgsql strict immutable;
 
 INSERT INTO publisher (name)
 VALUES ('Think Music Records');

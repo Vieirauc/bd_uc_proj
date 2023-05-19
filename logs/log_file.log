@@ -4604,3 +4604,1049 @@ DEBUG:logger:PUT /dbproj/user - payload: {'username': 'admin', 'password': 'admi
 INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:32:24] "PUT /dbproj/user HTTP/1.1" 200 -
 INFO:logger:POST /dbproj/card
 INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:32:31] "[31m[1mPOST /dbproj/card HTTP/1.1[0m" 400 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'admin', 'password': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:35:54] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'Prof', 'email': 'prof@jam.com', 'password': 'aguadecoco', 'role': 'artist', 'artistic_name': 'ProfJam', 'publisher': 'Think Music Records'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:36:02] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:38:13] "[35m[1mPOST /dbproj/card HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:38:57] "[31m[1mPOST /dbproj/card HTTP/1.1[0m" 400 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'admin', 'password': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:39:06] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: type object 'datetime.datetime' has no attribute 'datetime'
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:39:13] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: type object 'datetime.datetime' has no attribute 'timedelta'
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:41:13] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: type object 'datetime.datetime' has no attribute 'timedelta'
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:41:14] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: type object 'datetime.datetime' has no attribute 'timedelta'
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:42:02] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: relation "prepaid_card" does not exist
+LINE 1: INSERT INTO prepaid_card 
+                    ^
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:42:18] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: null value in column "consumer_account_id" of relation "card" violates not-null constraint
+DETAIL:  Failing row contains (4321810990191336, 2023-05-21 16:42:40.617668, 10, 2023-05-19 16:42:40.617668, null, 4).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:42:40] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: null value in column "consumer_account_id" of relation "card" violates not-null constraint
+DETAIL:  Failing row contains (5247210163081434, 2023-05-21 16:47:22.65881, 10, 2023-05-19 16:47:22.65881, null, 4).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:47:22] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: null value in column "consumer_account_id" of relation "card" violates not-null constraint
+DETAIL:  Failing row contains (4446447063874271, 2023-05-21 16:51:28.359135, 10, 2023-05-19 16:51:28.359135, null, 4).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:51:28] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: insert or update on table "card" violates foreign key constraint "card_fk2"
+DETAIL:  Key (administrator_account_id)=(4) is not present in table "administrator".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:53:07] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:53:17] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'admin', 'password': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:53:22] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 16:53:33] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: not all arguments converted during string formatting
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:31:37] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: relation "card_id_seq" does not exist
+LINE 3: ...                VALUES (pseudo_encrypt_24(nextval('card_id_s...
+                                                             ^
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:31:51] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: function pseudo_encrypt_24(bigint) does not exist
+LINE 3:                         VALUES (pseudo_encrypt_24(nextval('c...
+                                        ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:32:07] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: function pseudo_encrypt_24(bigint) does not exist
+LINE 3:                         VALUES (pseudo_encrypt_24(nextval('c...
+                                        ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:32:41] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: function pseudo_encrypt_24(bigint) does not exist
+LINE 3:                         VALUES (pseudo_encrypt_24(nextval('c...
+                                        ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:33:15] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: function pseudo_encrypt_24(bigint) does not exist
+LINE 3:                         VALUES (pseudo_encrypt_24(nextval('c...
+                                        ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:33:18] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: insert or update on table "card" violates foreign key constraint "card_fk2"
+DETAIL:  Key (administrator_account_id)=(4) is not present in table "administrator".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:33:28] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'admin', 'password': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:33:36] "[35m[1mPUT /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:33:44] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'admin', 'password': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:33:48] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:33:59] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:54:35] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: bigint out of range
+CONTEXT:  PL/pgSQL function bounded_pseudo_encrypt(bigint,bigint,bigint) line 8 at assignment
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:54:39] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: bigint out of range
+CONTEXT:  PL/pgSQL function bounded_pseudo_encrypt(bigint,bigint,bigint) line 8 at assignment
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:56:46] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: bigint out of range
+CONTEXT:  PL/pgSQL function bounded_pseudo_encrypt(bigint,bigint,bigint) line 8 at assignment
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:57:30] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: insert or update on table "card" violates foreign key constraint "card_fk2"
+DETAIL:  Key (administrator_account_id)=(4) is not present in table "administrator".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:57:38] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:57:43] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:57:44] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:59:04] "[35m[1mPOST /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:59:10] "[35m[1mPOST /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:59:34] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 17:59:36] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:00:48] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:00:50] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:01:53] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:01:54] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:02:52] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:02:54] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:03:44] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: bigint out of range
+CONTEXT:  PL/pgSQL function bounded_pseudo_encrypt(bigint,bigint,bigint) line 8 at assignment
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:03:46] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:05:44] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: duplicate key value violates unique constraint "card_pkey"
+DETAIL:  Key (id)=(0) already exists.
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:05:46] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:06:13] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+ERROR:logger:POST /dbproj/card - error: duplicate key value violates unique constraint "card_pkey"
+DETAIL:  Key (id)=(1000000000000000) already exists.
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:06:16] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:07:24] "[35m[1mPOST /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:07:54] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:07:56] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:08:09] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:08:19] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:08:22] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:08:24] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:08:25] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:08:26] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:08:28] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:08:28] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:08:30] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:08:31] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:10:02] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:10:04] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:10:06] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:10:07] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:10:08] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:10:13] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:27] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:29] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:32] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:32] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:33] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:34] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:35] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:36] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:37] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:38] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:39] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:11:40] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:21:15] "[31m[1mPOST /dbproj/subscription HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:21:31] "[31m[1mPOST /dbproj/subscription HTTP/1.1[0m" 400 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'lucas', 'password': 'lu123'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:21:36] "[35m[1mPUT /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'lucas', 'password': 'lu123'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:21:40] "[35m[1mPUT /dbproj/user HTTP/1.1[0m" 500 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'lucas', 'email': 'lucas@gmail.com', 'password': 'lu123', 'role': 'consumer'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:21:44] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'lucas', 'password': 'lu123'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:21:46] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: column "number" does not exist
+LINE 1: SELECT amount FROM card WHERE number = '9938010394544344'
+                                      ^
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:21:57] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: new row for relation "card" violates check constraint "amount"
+DETAIL:  Failing row contains (9938010394544344, 2023-05-21 18:11:29.599013, 0, 2023-05-19 18:11:29.599013, 4).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:22:42] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:23:51] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:23:54] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:23:55] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: new row for relation "card" violates check constraint "amount"
+DETAIL:  Failing row contains (9938010394544344, 2023-05-21 18:23:54.832023, 0, 2023-05-19 18:23:54.832023, 4).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:24:19] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:25:41] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:25:45] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:25:46] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: relation "subscription" does not exist
+LINE 1: INSERT INTO subscription (start_date,limit_date,type,cost,ca...
+                    ^
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:25:48] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: null value in column "datetime" of relation "subscripton" violates not-null constraint
+DETAIL:  Failing row contains (1, 2023-05-19, 2023-08-17, 2, -9, null, 9935928581252660, 5).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:26:19] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: relation "subscription" does not exist
+LINE 1: SELECT * FROM subscription WHERE user_account_id = 5
+                      ^
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:34:06] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: column "user_account_id" does not exist
+LINE 1: SELECT * FROM subscripton WHERE user_account_id = 5
+                                        ^
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:34:29] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: not all arguments converted during string formatting
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:34:52] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: not all arguments converted during string formatting
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:35:10] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: new row for relation "subscripton" violates check constraint "cost"
+DETAIL:  Failing row contains (2, 2023-05-19, 2023-08-17, 2, -9, 2023-05-19 18:35:15.90178, 9935928581252660, 5).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:35:15] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: insert or update on table "subscripton" violates foreign key constraint "subscripton_fk2"
+DETAIL:  Key (consumer_account_id)=(5) is not present in table "consumer".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:37:58] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'lucas', 'email': 'lucas@gmail.com', 'password': 'lu123', 'role': 'consumer'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:38:08] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'lucas', 'password': 'lu123'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:38:11] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/subscription
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:38:19] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'admin', 'email': 'admin@admin.com', 'password': 'admin', 'role': 'admin'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:46:14] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:46:20] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/card
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:46:23] "POST /dbproj/card HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: insert or update on table "subscripton" violates foreign key constraint "subscripton_fk2"
+DETAIL:  Key (consumer_account_id)=(5) is not present in table "consumer".
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:46:25] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/user
+DEBUG:logger:POST /dbproj/user - payload: {'username': 'lucas', 'email': 'lucas@gmail.com', 'password': 'lu123', 'role': 'consumer'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:46:30] "POST /dbproj/user HTTP/1.1" 200 -
+INFO:logger:PUT /dbproj/user
+DEBUG:logger:PUT /dbproj/user - payload: {'username': 'lucas', 'password': 'lu123'}
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:46:32] "PUT /dbproj/user HTTP/1.1" 200 -
+INFO:logger:POST /dbproj/subscription
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:46:51] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:logger:POST /dbproj/subscription
+ERROR:logger:POST /dbproj/subscription - error: list indices must be integers or slices, not str
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 18:47:47] "POST /dbproj/subscription HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:logger:
+---------------------------------------------------------------
+API v1.1 online: http://localhost:8080/
+
+
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-544-939
+INFO:werkzeug: * Detected change in 'c:\\Users\\luka3\\Desktop\\UC\\Semestre 2\\BD\\Projeto\\meta2\\bd_uc_proj\\python\\music_api.py', reloading
+INFO:werkzeug: * Restarting with stat

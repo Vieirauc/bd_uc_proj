@@ -77,10 +77,11 @@ def token_required(func):
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
             user_id = data['user_id']
+            role = data['role']
         except:
 
             return flask.jsonify({'alerta': 'Invalid Token!'}), 400
-        return func(user_id,*args, **kwargs)
+        return func(data,*args, **kwargs)
     return decorated
 
 ##########################################################
@@ -116,7 +117,8 @@ def landing_page():
     
 #Funcionalidade 1
 @app.route('/dbproj/user', methods=['POST'])
-def add_user():
+@token_required
+def add_user(data):
     logger.info('POST /dbproj/user')
     payload = flask.request.get_json()
 
@@ -193,20 +195,10 @@ def add_user():
         
     #Add artist and resquest admin token in header
     elif(payload['role'] == 'artist'):
-        if 'admin-token' in flask.request.headers:
-            token = flask.request.headers['admin-token']
-
-        if not token:
-            return flask.jsonify({"alerta": "Missing Admin Token!"}), 400
         
-        try:
-            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-            user_id = data['user_id']
-            role = data['role']
-            if(role != 'admin'):
-                return flask.jsonify({"alerta": "Need admin permission!"}), 400
-        except:
-            return flask.jsonify({'alerta': 'Invalid Token!'}), 400
+        if data['role'] != 'admin':
+            response = {'status': StatusCodes['api_error'], 'results': 'Only admin can add artist'}
+            return flask.jsonify(response)
         
         statement = '''
             INSERT INTO account (username, email, password_hash)
@@ -344,7 +336,8 @@ def login_user():
 #Funcionalidade 3
 @app.route('/dbproj/song', methods=['POST'])
 @token_required
-def add_song(user_id):
+def add_song(data):
+    user_id = data['user_id']
     logger.info('POST /dbproj/song')
     payload = flask.request.get_json()
 
@@ -429,7 +422,8 @@ def add_song(user_id):
 #Funcionalidade 4
 @app.route('/dbproj/album', methods=['POST'])
 @token_required
-def add_album(user_id):
+def add_album(data):
+    user_id = data['user_id']
     logger.info('POST /dbproj/album')
     payload = flask.request.get_json()
 
@@ -630,7 +624,9 @@ def artist_info(artist_id):
 #Funcionalidade 7
 #TODO: Testar e corrigir codigo que se segue
 @app.route('/dbproj/subscription', methods=['POST'])
-def subscribe_to_premium():
+@token_required
+def subscribe_to_premium(data):
+    user_id = data['user_id']
     logger.info('POST /dbproj/subscription')
 
     payload = flask.request.get_json()
@@ -638,6 +634,10 @@ def subscribe_to_premium():
     # Verifying if required fields are present in the payload
     if 'period' not in payload or 'cards' not in payload:
         response = {'status': StatusCodes['bad_request'], 'errors': 'Missing required fields'}
+        return flask.jsonify(response)
+    
+    if payload['period'] not in ['month', 'quarter', 'semester']:
+        response = {'status': StatusCodes['bad_request'], 'errors': 'Invalid period'}
         return flask.jsonify(response)
 
     period = payload['period']
@@ -647,17 +647,64 @@ def subscribe_to_premium():
     cur = conn.cursor()
 
     try:
+        # Check if user has a subscription already
+        statement = '''SELECT * FROM subscripton WHERE consumer_account_id = %s'''
+        values = (user_id,)
+        cur.execute(statement, values)
+        result = cur.fetchone()
+        if result:
+            start_date = result[2]
+        else:
+            start_date = datetime.now()
+
         # Execute the SQL query to insert the subscription information
-        statement = '''INSERT INTO subscription (period) VALUES (%s) RETURNING id'''
-        values = (period,)
+        if(period == 'month'):
+            limit_date = start_date + timedelta(days=30)
+            type = 1
+            cost = 7
+        elif(period == 'quarter'):
+            limit_date = start_date + timedelta(days=90)
+            type = 2
+            cost = 21
+        elif(period == 'semester'):
+            limit_date = start_date + timedelta(days=180)
+            type = 3
+            cost = 42
+        
+        #Get amounts from cards and check if they are enough
+        card_amounts = {}
+        for card in cards:
+            statement = '''SELECT amount FROM card WHERE id = %s'''
+            values = (card,)
+            cur.execute(statement, values)
+            card_amounts[card] = cur.fetchone()[0]
+        
+        #Check if there is enough money in the cards
+        if sum(card_amounts.values()) < cost:
+            response = {'status': StatusCodes['bad_request'], 'errors': 'Insufficient funds'}
+            return flask.jsonify(response)
+        
+        #Update card amounts
+        cost_left = cost
+        for card in cards:
+            if cost_left > 0:
+                cost_left -= card_amounts[card]
+
+                card_final_amount = card_amounts[card] - cost_left
+                if card_final_amount < 0:
+                    card_final_amount = 0
+
+                statement = '''UPDATE card SET amount = %s WHERE id = %s'''
+                values = (card_final_amount, card)
+                cur.execute(statement, values)
+        
+        datetimeval = datetime.now()
+        statement = '''INSERT INTO subscripton (start_date,limit_date,type,cost,datetime,card_id,consumer_account_id)
+                        VALUES (%s,%s,%s,%s,%s,%s,%s) RETURNING id'''
+        values = (start_date,limit_date,type,cost,datetimeval,card,user_id)
         cur.execute(statement, values)
 
         subscription_id = cur.fetchone()[0]
-
-        # Execute the SQL query to insert the payment information for each card
-        statement = '''INSERT INTO payment (subscription_id, card_number) VALUES (%s, %s)'''
-        values = [(subscription_id, card) for card in cards]
-        cur.executemany(statement, values)
 
         conn.commit()
 
@@ -731,7 +778,8 @@ def create_playlist():
 #Funcionalidade 9
 @app.route('/dbproj/<int:song_ismn>', methods=['PUT'])
 @token_required
-def play_song(user_id, song_ismn):
+def play_song(data, song_ismn):
+    user_id = data['user_id']
     logger.info(f'PUT /dbproj/{song_ismn}')
 
     # Get the current user's top 10 played songs
@@ -753,7 +801,8 @@ def play_song(user_id, song_ismn):
 #Funcionalidade 10
 @app.route('/dbproj/card', methods=['POST'])
 @token_required
-def generate_cards(user_id):
+def generate_cards(data):
+    user_id = data['user_id']
     logger.info('POST /dbproj/card')
     payload = flask.request.get_json()
 
@@ -769,16 +818,9 @@ def generate_cards(user_id):
         return flask.jsonify(response)
     
 
-    token = flask.request.headers.get('token')
-    try:
-        print("got here")
-        data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
-        user_id = data['user_id']
-        role = data['role']
-        if(role != 'admin'):
-            return flask.jsonify({"alerta": "Need admin permission!"}), 400
-    except:
-        return flask.jsonify({'alerta': 'Invalid Token!'}), 400
+    if data['role'] != 'administrator':
+        response = {'status': StatusCodes['unauthorized'], 'errors': 'Only administrators can generate cards'}
+        return flask.jsonify(response)
     
     try:
         conn = db_connection()
@@ -786,15 +828,15 @@ def generate_cards(user_id):
 
         card_ids = []
         for i in range(num_cards):
-            card_id = generate_card_id(cur)
-            limit_date = datetime.datetime.now() + datetime.timedelta(days=30)
-            issue_date = datetime.datetime.now()
-            statement = '''INSERT INTO prepaid_card 
+            limit_date = datetime.now() + timedelta(days=2)
+            issue_date = datetime.now()
+            statement = '''INSERT INTO card 
                         (id, limit_date, amount, issue_date, administrator_account_id) 
-                        VALUES (%s,%s, %s, %s, %s) 
+                        VALUES (bounded_pseudo_encrypt(nextval('card_id_seq'),1000000000000000, 9999999999999999),%s, %s, %s, %s) 
                         RETURNING id'''
-            values = (card_id, limit_date, card_price, issue_date, user_id)
+            values = (limit_date, card_price, issue_date, user_id)
             cur.execute(statement, values)
+            card_id = cur.fetchone()[0]
             card_ids.append(card_id)
 
         conn.commit()
@@ -817,7 +859,8 @@ def generate_cards(user_id):
 #Funcionalidade 11
 @app.route('/dbproj/comments/<song_id>', methods=['POST'])
 @token_required
-def leave_comment(user_id, song_id):
+def leave_comment(data, song_id):
+    user_id = data['user_id']
     logger.info(f'POST /dbproj/comments/{song_id}')
 
     payload = flask.request.get_json()
@@ -856,7 +899,8 @@ def leave_comment(user_id, song_id):
 #Funcionalidade 11.1
 @app.route('/dbproj/comments/<song_id>/<parent_comment_id>', methods=['POST'])
 @token_required
-def reply_comment(user_id,song_id, parent_comment_id):
+def reply_comment(data,song_id, parent_comment_id):
+    user_id = data['user_id']
     logger.info(f'POST /dbproj/comments/{song_id}')
 
     payload = flask.request.get_json()
