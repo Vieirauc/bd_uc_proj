@@ -94,11 +94,11 @@ CREATE TABLE comment (
 );
 
 CREATE TABLE streaming (
-	id			 SERIAL NOT NULL,
-	streams		 INTEGER NOT NULL DEFAULT 0,
-	consumer_account_id BIGINT NOT NULL,
-	song_ismn		 INTEGER NOT NULL,
-	PRIMARY KEY(id)
+    id             SERIAL NOT NULL,
+    datetime         TIMESTAMP NOT NULL,
+    consumer_account_id BIGINT NOT NULL,
+    song_ismn         INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE compilation (
@@ -192,32 +192,123 @@ BEGIN
 END
 $$ LANGUAGE plpgsql strict immutable;
 
+BEGIN TRANSACTION;
+
+-- Insert entries into the 'account' table
+INSERT INTO account (username, password_hash, email)
+VALUES
+    ('admin1', 'admin1pass', 'admin1@example.com'),
+    ('admin2', 'admin2pass', 'admin2@example.com'),
+    ('consumer1', 'consumer1pass', 'consumer1@example.com'),
+    ('consumer2', 'consumer2pass', 'consumer2@example.com'),
+    ('consumer3', 'consumer3pass', 'consumer3@example.com'),
+    ('consumer4', 'consumer4pass', 'consumer4@example.com'),
+    ('artist1', 'artist1pass', 'artist1@example.com'),
+    ('artist2', 'artist2pass', 'artist2@example.com'),
+    ('artist3', 'artist3pass', 'artist3@example.com'),
+    ('artist4', 'artist4pass', 'artist4@example.com');
+
+-- Insert entries into the 'publisher' table
 INSERT INTO publisher (name)
-VALUES ('Think Music Records');
+VALUES
+    ('Publisher A'),
+    ('Publisher B'),
+    ('Publisher C'),
+    ('Publisher D'),
+    ('Publisher E'),
+    ('Publisher F'),
+    ('Publisher G'),
+    ('Publisher H'),
+    ('Publisher I'),
+    ('Publisher J');
 
-INSERT INTO publisher (name)
-VALUES ('Make More Music');
+-- Insert entries into the 'administrator' table
+INSERT INTO administrator (account_id)
+VALUES
+    (1),
+    (2);
 
-INSERT INTO account (username, password_hash, email)
-VALUES ('admincards', 'cards21', 'admin@cards.com');
-
---INSERT INTO administrator (account_id) VALUES ((SELECT id FROM account WHERE username = 'admincards'));
-
---INSERT INTO card (id, limit_date, amount, issue_date, consumer_account_id, administrator_account_id)
---VALUES (1, '2023-6-26', 20, '2023-5-19', 1, 1);
-
--- Inserir dados na tabela account
-INSERT INTO account (username, password_hash, email)
-VALUES ('mizzymiles', 'miles21', 'mizzy@miles.com');
-
-INSERT INTO account (username, password_hash, email)
-VALUES ('gsonwastaken', 'wbg123', 'g@son.com');
-
--- Obter o ID da conta inserida
--- No PostgreSQL, podemos usar a cláusula RETURNING para retornar o ID gerado automaticamente
--- Se você estiver usando um banco de dados diferente, consulte a documentação para obter a sintaxe correta
+-- Insert entries into the 'artist' table
 INSERT INTO artist (artistic_name, publisher_id, account_id)
-VALUES ('Mizzy Miles', 2, (SELECT id FROM account WHERE username = 'mizzymiles'));
+VALUES
+    ('Artist 1', 1, 7),
+    ('Artist 2', 2, 8),
+    ('Artist 3', 3, 9),
+    ('Artist 4', 4, 10);
 
-INSERT INTO artist (artistic_name, publisher_id, account_id)
-VALUES ('GSon', 2, (SELECT id FROM account WHERE username = 'gsonwastaken'));
+-- Insert entries into the 'compilation' table
+INSERT INTO compilation (nome)
+VALUES
+    ('Compilation 1'),
+    ('Compilation 2'),
+    ('Compilation 3'),
+    ('Compilation 4'),
+    ('Compilation 5'),
+    ('Compilation 6'),
+    ('Compilation 7'),
+    ('Compilation 8'),
+    ('Compilation 9'),
+    ('Compilation 10');
+
+-- Insert entries into the 'consumer' table (top10 constraint will only be checked after commit (INNITIALLY DEFERRED))
+INSERT INTO consumer (top10_id, account_id)
+VALUES
+
+    (1, 3),
+    (2, 4),
+    (3, 5),
+    (4, 6);
+-- Insert entries into the 'playlist' table
+INSERT INTO playlist (isprivate, consumer_account_id, compilation_id)
+VALUES
+
+    (true, 3, 1),
+    (false, 4, 2),
+    (true, 5, 3),
+    (false, 6, 4),
+    (true, 6, 5),
+    (false, 5, 6),
+    (true, 4, 7),
+    (false, 3, 8);
+
+
+
+
+
+-- Insert entries into the 'song' table
+INSERT INTO song (ismn, name, release_date, genre, duration, artist_account_id, publisher_id)
+VALUES
+    (1, 'Song 1', '2022-01-01', 'Genre 1', 180, 7, 1),
+    (2, 'Song 2', '2022-02-01', 'Genre 2', 200, 8, 2),
+    (3, 'Song 3', '2022-03-01', 'Genre 3', 220, 9, 3),
+    (4, 'Song 4', '2022-04-01', 'Genre 4', 240, 10, 4),
+    (5, 'Song 5', '2022-05-01', 'Genre 5', 260, 7, 5),
+    (6, 'Song 6', '2022-06-01', 'Genre 6', 280, 8, 6),
+    (7, 'Song 7', '2022-07-01', 'Genre 7', 300, 7, 7),
+    (8, 'Song 8', '2022-08-01', 'Genre 8', 320, 8, 8),
+    (9, 'Song 9', '2022-09-01', 'Genre 9', 340, 9, 9),
+    (10, 'Song 10', '2022-10-01', 'Genre 10', 360, 10, 10);
+COMMIT;
+
+INSERT INTO streaming (consumer_account_id, datetime, song_ismn)
+VALUES (3, '2021-6-19', 1);
+
+INSERT INTO streaming (consumer_account_id, datetime, song_ismn)
+VALUES (3, '2021-6-17', 1);
+
+INSERT INTO streaming (consumer_account_id, datetime, song_ismn)
+VALUES (3, '2021-6-12', 1);
+
+INSERT INTO streaming (consumer_account_id, datetime, song_ismn)
+VALUES (3, '2021-6-17', 2);
+
+INSERT INTO streaming (consumer_account_id, datetime, song_ismn)
+VALUES (3, '2021-6-1', 2);
+
+INSERT INTO streaming (consumer_account_id, datetime, song_ismn)
+VALUES (3, '2021-7-17', 2);
+
+INSERT INTO streaming (consumer_account_id, datetime, song_ismn)
+VALUES (3, '2021-7-19', 2);
+
+

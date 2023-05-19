@@ -963,11 +963,12 @@ def reply_comment(data,song_id, parent_comment_id):
 
 #Funcionalidade 12
 #TODO: Testar e corrigir codigo que se segue
-@app.route('/dbproj/report/<year_month>', methods=['GET'])
-def generate_monthly_report(year_month):
-    logger.info(f'GET /dbproj/report/{year_month}')
+@app.route('/dbproj/report/<year>-<month>', methods=['GET'])
+def generate_monthly_report(year,month):
+    logger.info(f'GET /dbproj/report/{year}-{month}')
 
-    year, month = year_month.split('-')
+    
+    dt = datetime(int(year), int(month), 1)
 
     conn = db_connection()
     cur = conn.cursor()
@@ -975,28 +976,47 @@ def generate_monthly_report(year_month):
     try:
         # Execute the SQL query to retrieve the monthly report
         statement = '''
-            SELECT EXTRACT(MONTH FROM playback_time) AS month, genre, COUNT(*) AS playbacks
-            FROM playback
-            JOIN song ON playback.song_id = song.id
-            WHERE EXTRACT(YEAR FROM playback_time) = %s
-                AND EXTRACT(MONTH FROM playback_time) >= %s
-            GROUP BY EXTRACT(MONTH FROM playback_time), genre
-            ORDER BY month, genre
+            SELECT
+            DATE_TRUNC('month', s.datetime) AS month,
+            g.genre,
+            COUNT(*) AS playbacks
+            FROM
+                streaming s
+                INNER JOIN song g ON s.song_ismn = g.ismn
+            WHERE
+                DATE_TRUNC('month', s.datetime) >= DATE_TRUNC('month', %s - INTERVAL '1 year') AND DATE_TRUNC('month', s.datetime) <= DATE_TRUNC('month', %s)
+            GROUP BY
+                month,
+                genre
+            ORDER BY
+                month ASC,
+                genre ASC;
         '''
-        values = (year, month)
+        values = (dt,dt)
         cur.execute(statement, values)
 
-        results = cur.fetchall()
+        query_result = cur.fetchall()
+        if not query_result:
+            response = {'status': StatusCodes['not_found'], 'errors': f'No results for the month {month} of {year}'}
+            return flask.jsonify(response)
+        
+        # Create a list to store the result objects
+        results = []
 
-        response = {'status': StatusCodes['success'], 'results': []}
-        for result in results:
-            month_name = calendar.month_name[int(result[0])]
-            genre = result[1]
-            playbacks = result[2]
-            response['results'].append({'month': month_name, 'genre': genre, 'playbacks': playbacks})
+        # Iterate over the query result and format each row as a dictionary
+        for row in query_result:
+            result = {
+                "month": row[0],  # Assuming the month value is in the first column of the query result
+                "genre": row[1],  # Assuming the genre value is in the second column of the query result
+                "playbacks": row[2]  # Assuming the playbacks value is in the third column of the query result
+            }
+            results.append(result)
+
+        # Create the final response dictionary
+        response = {'status': StatusCodes['success'], 'results': results}
 
     except (Exception, psycopg2.DatabaseError) as error:
-        logger.error(f'GET /dbproj/report/{year_month} - error: {error}')
+        logger.error(f'GET /dbproj/report/{year}-{month} - error: {error}')
         response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
     finally:
         if conn is not None:
