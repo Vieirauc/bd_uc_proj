@@ -709,6 +709,69 @@ def create_playlist():
 
     return flask.jsonify(response)
 
+#Funcionalidade 9
+@app.route('/dbproj/<int:song_ismn>', methods=['PUT'])
+@token_required
+def play_song(user_id, song_ismn):
+    logger.info(f'PUT /dbproj/{song_ismn}')
+
+    # Get the current user's top 10 played songs
+    user_top_songs = get_user_top_songs(user_id)
+
+    # Increment the play count for the played song
+    update_play_count(song_ismn)
+
+    # Update the user's top 10 played songs if necessary
+    if song_ismn in user_top_songs:
+        user_top_songs.remove(song_ismn)
+    user_top_songs.append(song_ismn)
+    user_top_songs = sorted(user_top_songs, key=lambda x: get_play_count(x), reverse=True)[:10]
+    update_user_top_songs(user_id, user_top_songs)
+
+    response = {'status': StatusCodes['success']}
+    return flask.jsonify(response)
+
+#Funcionalidade 10
+@app.route('/dbproj/card', methods=['POST'])
+@token_required
+def generate_cards(user_id):
+    logger.info('POST /dbproj/card')
+    payload = flask.request.get_json()
+
+    num_cards = payload.get('number_cards')
+    card_price = payload.get('card_price')
+
+    if not num_cards or not card_price:
+        response = {'status': StatusCodes['bad_request'], 'errors': 'Both number_cards and card_price are required'}
+        return flask.jsonify(response)
+
+    try:
+        conn = db_connection()
+        cur = conn.cursor()
+
+        card_ids = []
+        for i in range(num_cards):
+            cur.execute('INSERT INTO prepaid_card (price, created_by) VALUES (%s, %s) RETURNING id', (card_price, user_id))
+            card_id = cur.fetchone()[0]
+            card_ids.append(card_id)
+
+        conn.commit()
+
+        response = {'status': StatusCodes['success'], 'results': card_ids}
+        return flask.jsonify(response)
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error(f'POST /dbproj/card - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+        conn.rollback()
+
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
+
+
 #Funcionalidade 11
 @app.route('/dbproj/comments/<song_id>', methods=['POST'])
 @token_required

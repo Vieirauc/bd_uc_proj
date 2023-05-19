@@ -163,6 +163,14 @@ VALUES ('Think Music Records');
 INSERT INTO publisher (name)
 VALUES ('Make More Music');
 
+INSERT INTO account (username, password_hash, email)
+VALUES ('admincards', 'cards21', 'admin@cards.com');
+
+--INSERT INTO administrator (account_id) VALUES ((SELECT id FROM account WHERE username = 'admincards'));
+
+--INSERT INTO card (id, limit_date, amount, issue_date, consumer_account_id, administrator_account_id)
+--VALUES (1, '2023-6-26', 20, '2023-5-19', 1, 1);
+
 -- Inserir dados na tabela account
 INSERT INTO account (username, password_hash, email)
 VALUES ('mizzymiles', 'miles21', 'mizzy@miles.com');
